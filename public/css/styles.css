@@ -79,7 +79,6 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background: var(--background-dark) !important;
-    padding-top: 70px;
     background-color: #200a0a !important;
     overflow-x: hidden;
     scroll-behavior: smooth;
