@@ -124,6 +124,23 @@ function initializeSecondaryNavSlider() {
     });
 }
 
+// Utility function for smooth scrolling to elements
+function smoothScrollToElement(element, options = {}) {
+    if (!element) return;
+    
+    const defaultOptions = {
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'nearest'
+    };
+    
+    const scrollOptions = { ...defaultOptions, ...options };
+    
+    setTimeout(() => {
+        element.scrollIntoView(scrollOptions);
+    }, options.delay || 200);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const isHomepage = document.body.classList.contains('homepage');
     const isFirstLoad = !sessionStorage.getItem('hasVisitedFeaturePage');

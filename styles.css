@@ -556,12 +556,11 @@ body.homepage {
     align-items: center;
     justify-content: center;
     background: 
-        radial-gradient(ellipse at top left, rgba(255, 0, 0, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(255, 0, 0, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at center, rgba(255, 255, 255, 0.06) 0%, transparent 60%),
-        linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(30, 5, 5, 0.8) 50%, rgba(15, 15, 15, 0.8) 100%);
+        radial-gradient(ellipse at top left, rgba(156, 76, 76, 0.681) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(255, 0, 0, 0.399) 0%, transparent 50%),
+        linear-gradient(135deg, #833838 0%, #1a0505 50%, #4d2929 100%);
     backdrop-filter: blur(15px);
-    border-top: 1px solid rgba(255, 0, 0, 0.1);
+    border-top: 1px solid rgba(193, 154, 154, 0.789);
 }
 
 
@@ -820,7 +819,7 @@ body.homepage {
     }
 }
 
-.nav-brand:hover {
+.nav-brand:hover .brand-text {
     transform: scale(1.05);
 }
 
@@ -871,7 +870,7 @@ body.homepage {
 
 /* Secondary Navigation for Tool Pages */
 .secondary-nav {
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.521);
     backdrop-filter: blur(15px);
     border-top: 1px solid rgba(255, 0, 0, 0.2);
     border-bottom: 1px solid var(--border-color);
@@ -1207,6 +1206,8 @@ textarea.form-control {
     padding: 1.5rem;
     color: var(--text-secondary);
     line-height: 1.6;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 
@@ -1464,9 +1465,9 @@ body {
     padding-top: 120px;
     min-height: 100vh;
     background: 
-        radial-gradient(ellipse at top left, rgba(255, 0, 0, 0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(255, 0, 0, 0.04) 0%, transparent 50%),
-        linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%);
+        radial-gradient(ellipse at top left, rgba(156, 76, 76, 0.681) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(255, 0, 0, 0.399) 0%, transparent 50%),
+        linear-gradient(135deg, #833838 0%, #1a0505 50%, #4d2929 100%);
 }
 
 .feature-content {
@@ -2287,17 +2288,19 @@ body {
 }
 
 .help-header h1 {
-    font-size: calc(var(--heading-font-size) * 0.7);
+    font-size: 1.8rem;
     color: var(--text-primary);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 700;
 }
 
 .help-header p {
     color: var(--text-secondary);
-    font-size: calc(var(--base-font-size) * 0.9);
+    font-size: 1rem;
+    text-align: center;
 }
 
 .help-grid {
@@ -2310,9 +2313,11 @@ body {
 .help-section {
     background: rgba(26, 26, 26, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--border-radius);
-    padding: 2rem;
+    border-radius: 12px;
+    padding: 0;
     transition: all 0.3s ease;
+    margin-bottom: 1rem;
+    overflow: hidden;
 }
 
 .help-section:not(.help-header):hover {
@@ -2329,9 +2334,11 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: 0;
+    padding: 1.2rem 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.2s ease;
 }
 
 .help-section-header.collapsible {
@@ -2342,6 +2349,11 @@ body {
 }
 
 .help-section-header.collapsible:hover {
+    background: rgba(255, 0, 0, 0.05);
+    border-bottom-color: rgba(255, 0, 0, 0.2);
+}
+
+.help-section-header.collapsible:hover h2 {
     color: var(--accent-color);
 }
 
@@ -2375,42 +2387,51 @@ body {
 }
 
 .help-section-header h2 {
-    font-size: calc(var(--heading-font-size) * 0.6);
+    font-size: 1.1rem;
     color: var(--text-primary);
     margin: 0;
+    font-weight: 600;
 }
 
 .help-content h3 {
     color: var(--accent-color);
-    font-size: calc(var(--base-font-size) * 0.95);
-    margin: 1.5rem 0 0.5rem 0;
+    font-size: 1rem;
+    margin: 1.5rem 0 0.75rem 0;
+    font-weight: 600;
+    text-align: left;
 }
 
 .help-content h4 {
     color: var(--text-primary);
-    font-size: calc(var(--base-font-size) * 0.9);
+    font-size: 0.95rem;
     margin: 1rem 0 0.5rem 0;
     display: flex;
     align-items: center;
+    font-weight: 600;
+    text-align: left;
 }
 
 .help-content p {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
-    font-size: calc(var(--base-font-size) * 0.9);
+    font-size: 0.95rem;
+    text-align: left;
 }
 
 .help-content ul,
 .help-content ol {
     color: var(--text-secondary);
-    margin: 0.5rem 0 1rem 1.5rem;
+    margin: 0.5rem 0 1rem 1.2rem;
     line-height: 1.6;
-    font-size: calc(var(--base-font-size) * 0.9);
+    font-size: 0.95rem;
+    text-align: left;
+    padding-left: 0;
 }
 
 .help-content li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
 }
 
 .help-content strong {
@@ -2432,6 +2453,7 @@ body {
     border-radius: 8px;
     padding: 1rem;
     margin: 1rem 0;
+    border-left: 3px solid var(--accent-color);
 }
 
 /* Troubleshooting section uses same styling as other help sections */
@@ -2446,8 +2468,14 @@ body {
 .troubleshooting-item {
     background: rgba(26, 26, 26, 0.6);
     border-radius: 8px;
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.troubleshooting-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(26, 26, 26, 0.8);
 }
 
 @media (max-width: 1000px) {

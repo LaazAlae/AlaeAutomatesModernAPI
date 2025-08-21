@@ -349,6 +349,14 @@
 
             questionsContainer.classList.add('hidden');
             resultsContainer.classList.remove('hidden');
+            
+            // Auto-scroll to results after modal closes
+            setTimeout(() => {
+                resultsContainer.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 300);
         }
 
         // Event Listeners
@@ -432,22 +440,47 @@
                 const questionsData = await questionsResponse.json();
 
                 currentQuestions = questionsData.questions;
-                progressContainer.classList.add('hidden');
+                
+                // Hide progress bar after completing
+                setTimeout(() => {
+                    progressContainer.classList.add('hidden');
+                }, 1000);
 
                 if (currentQuestions.length > 0) {
                     questionsContainer.classList.remove('hidden');
+                    
+                    // Auto-scroll to questions section
+                    setTimeout(() => {
+                        questionsContainer.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 200);
+                    
                     // Auto-open modal for first-time processing
                     setTimeout(() => {
                         currentQuestionIndex = 0;
                         displayCurrentQuestion();
                         openModal();
-                    }, 500);
+                    }, 1200);
                 } else {
                     resultsContainer.classList.remove('hidden');
+                    
+                    // Auto-scroll to results
+                    setTimeout(() => {
+                        resultsContainer.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 200);
                 }
             } catch (error) {
                 console.error('Error:', error);
                 progressText.textContent = 'An error occurred.';
+                // Hide progress bar on error after delay
+                setTimeout(() => {
+                    progressContainer.classList.add('hidden');
+                }, 2000);
             }
         });
 

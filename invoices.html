@@ -218,15 +218,33 @@
                 if (data.success) {
                     progressText.textContent = 'Processing complete!';
                     progressFill.style.width = '100%';
+                    
+                    // Hide progress bar after short delay
+                    setTimeout(() => {
+                        progressContainer.classList.add('hidden');
+                    }, 1500);
+                    
                     resultMessage.textContent = data.message;
                     downloadZipBtn.href = `${API_BASE}${data.download_url}`;
                     resultsContainer.classList.remove('hidden');
+                    
+                    // Auto-scroll to results
+                    setTimeout(() => {
+                        resultsContainer.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 200);
                 } else {
                     progressText.textContent = 'An error occurred.';
                 }
             } catch (error) {
                 console.error('Error:', error);
                 progressText.textContent = 'An error occurred.';
+                // Hide progress bar on error after delay
+                setTimeout(() => {
+                    progressContainer.classList.add('hidden');
+                }, 2000);
             }
         });
     </script>

@@ -83,39 +83,19 @@
                 </div>
 
                 <div class="macros-grid">
-                    <!-- Credit Card Data Cleaner -->
-                    <div class="macro-card">
-                        <h3 class="macro-card-title">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                <line x1="1" y1="10" x2="23" y2="10"></line>
-                            </svg>
-                            Credit Card Data Cleaner
-                        </h3>
-                        <p class="macro-card-description">Automatically cleans credit card batch data by removing headers, totals, and formatting for automation scripts.</p>
-                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('ccCleaner')">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                            View Code
-                        </button>
-                    </div>
-
-                    <!-- Invoice Number Extractor -->
+                    <!-- Clean-up & Format Macro -->
                     <div class="macro-card">
                         <h3 class="macro-card-title">
                             <svg class="icon" viewBox="0 0 24 24">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                 <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <line x1="16" y1="15" x2="8" y2="15"></line>
+                                <path d="M10 15h4"></path>
+                                <path d="M10 17h2"></path>
                             </svg>
-                            Invoice Number Extractor
+                            Clean-up & Format Macro
                         </h3>
-                        <p class="macro-card-description">Extracts and validates invoice numbers from Excel data using pattern matching and formatting rules.</p>
-                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('invoiceExtractor')">
+                        <p class="macro-card-description">Removes empty rows and columns, trims whitespace from cells, applies consistent formatting, and auto-fits column widths.</p>
+                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('cleanupFormat')">
                             <svg class="icon" viewBox="0 0 24 24">
                                 <polyline points="16 18 22 12 16 6"></polyline>
                                 <polyline points="8 6 2 12 8 18"></polyline>
@@ -124,36 +104,19 @@
                         </button>
                     </div>
 
-                    <!-- Data Validator -->
+                    <!-- Sort & Sum Macro -->
                     <div class="macro-card">
                         <h3 class="macro-card-title">
                             <svg class="icon" viewBox="0 0 24 24">
-                                <polyline points="20,6 9,17 4,12"></polyline>
+                                <path d="M3 6h18"></path>
+                                <path d="M7 12h10"></path>
+                                <path d="M10 18h4"></path>
+                                <path d="M21 6l-3-3v6"></path>
                             </svg>
-                            Data Validator
+                            Sort & Sum Macro
                         </h3>
-                        <p class="macro-card-description">Validates data integrity, checks for duplicates, and ensures proper formatting across spreadsheet columns.</p>
-                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('dataValidator')">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                            View Code
-                        </button>
-                    </div>
-
-                    <!-- Column Organizer -->
-                    <div class="macro-card">
-                        <h3 class="macro-card-title">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="9" y1="9" x2="15" y2="15"></line>
-                                <line x1="15" y1="9" x2="9" y2="15"></line>
-                            </svg>
-                            Column Organizer
-                        </h3>
-                        <p class="macro-card-description">Automatically organizes and rearranges columns based on predefined templates and business rules.</p>
-                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('columnOrganizer')">
+                        <p class="macro-card-description">Sorts data by specified column, adds sum totals for numeric columns, and preserves header formatting with professional styling.</p>
+                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('sortSum')">
                             <svg class="icon" viewBox="0 0 24 24">
                                 <polyline points="16 18 22 12 16 6"></polyline>
                                 <polyline points="8 6 2 12 8 18"></polyline>
@@ -190,311 +153,164 @@
 
     <script src="script.js"></script>
     <script>
-        const macroModal = document.getElementById('macroModal');
-        const modalClose = document.getElementById('modalClose');
-        const macroTitle = document.getElementById('macroTitle');
-        const macroCode = document.getElementById('macroCode');
-        const copyMacroBtn = document.getElementById('copyMacroBtn');
+        // Global variables and functions
+        let macroModal, modalClose, macroTitle, macroCode, copyMacroBtn;
 
         const macros = {
-            ccCleaner: {
-                title: "Credit Card Data Cleaner Macro",
-                code: `Sub CleanCreditCardData()
-    '
-    ' Credit Card Data Cleaner Macro
-    ' Removes headers, totals, and formats data for automation
-    '
-    
+            cleanupFormat: {
+                title: "Clean-up & Format Macro",
+                code: `Sub CleanupAndFormat()
     Dim ws As Worksheet
     Dim lastRow As Long
     Dim lastCol As Long
     Dim i As Long
+    Dim j As Long
     
     Set ws = ActiveSheet
     
     ' Find the last row and column with data
-    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
     lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
     
-    ' Remove header rows (typically first 3-5 rows)
-    For i = 1 To 5
-        If ws.Cells(i, 1).Value Like "*TOTAL*" Or _
-           ws.Cells(i, 1).Value Like "*HEADER*" Or _
-           ws.Cells(i, 1).Value Like "*DATE*" Or _
-           IsEmpty(ws.Cells(i, 1)) Then
-            ws.Rows(i).Delete
-            lastRow = lastRow - 1
-            i = i - 1
-        End If
-    Next i
+    Application.ScreenUpdating = False
     
-    ' Remove footer/total rows
-    For i = lastRow To lastRow - 5 Step -1
-        If ws.Cells(i, 1).Value Like "*TOTAL*" Or _
-           ws.Cells(i, 1).Value Like "*SUMMARY*" Or _
-           IsEmpty(ws.Cells(i, 1)) Then
+    ' Remove empty rows
+    For i = lastRow To 1 Step -1
+        If Application.WorksheetFunction.CountA(ws.Rows(i)) = 0 Then
             ws.Rows(i).Delete
         End If
     Next i
     
-    ' Clean and format credit card numbers
-    For i = 2 To lastRow
-        ' Column G typically contains card numbers
-        If Not IsEmpty(ws.Cells(i, 7)) Then
-            Dim cardNum As String
-            cardNum = ws.Cells(i, 7).Value
-            
-            ' Remove spaces and format as XXXX####
-            cardNum = Replace(cardNum, " ", "")
-            If Len(cardNum) > 4 Then
-                cardNum = "XXXX" & Right(cardNum, 4)
-                ws.Cells(i, 7).Value = cardNum
-            End If
+    ' Remove empty columns
+    For j = lastCol To 1 Step -1
+        If Application.WorksheetFunction.CountA(ws.Columns(j)) = 0 Then
+            ws.Columns(j).Delete
         End If
-        
-        ' Clean settlement amounts (Column H)
-        If Not IsEmpty(ws.Cells(i, 8)) Then
-            Dim amount As String
-            amount = ws.Cells(i, 8).Value
-            
-            ' Remove currency symbols and format as number
-            amount = Replace(amount, "$", "")
-            amount = Replace(amount, ",", "")
-            
-            ' Skip negative amounts (refunds)
-            If Left(amount, 1) = "(" And Right(amount, 1) = ")" Then
-                ws.Rows(i).Delete
-                lastRow = lastRow - 1
-                i = i - 1
-            Else
-                ws.Cells(i, 8).Value = CDbl(amount)
-                ws.Cells(i, 8).NumberFormat = "0.00"
-            End If
-        End If
-        
-        ' Clean customer names (Column E)
-        If Not IsEmpty(ws.Cells(i, 5)) Then
-            Dim customerName As String
-            customerName = ws.Cells(i, 5).Value
-            
-            ' Convert "Last, First" to "First Last"
-            If InStr(customerName, ",") > 0 Then
-                Dim nameParts() As String
-                nameParts = Split(customerName, ",")
-                If UBound(nameParts) >= 1 Then
-                    customerName = Trim(nameParts(1)) & " " & Trim(nameParts(0))
-                    ws.Cells(i, 5).Value = customerName
-                End If
-            End If
-            
-            ' Handle special cases
-            If UCase(customerName) Like "*BILL .COM*" Then
-                ws.Cells(i, 5).Value = "BILL.COM"
-            End If
-        End If
-    Next i
+    Next j
     
-    ' Auto-fit columns
-    ws.Columns.AutoFit
-    
-    MsgBox "Credit card data cleaning completed!", vbInformation
-    
-End Sub`
-            },
-            invoiceExtractor: {
-                title: "Invoice Number Extractor Macro",
-                code: `Sub ExtractInvoiceNumbers()
-    '
-    ' Invoice Number Extractor Macro
-    ' Extracts and validates invoice numbers using pattern matching
-    '
-    
-    Dim ws As Worksheet
-    Dim lastRow As Long
-    Dim i As Long
-    Dim invoicePattern As String
-    
-    Set ws = ActiveSheet
-    lastRow = ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
-    
-    ' Common invoice patterns: P###### or R######
-    invoicePattern = "^[PR][0-9]{6,8}$"
-    
-    ' Add validation column if it doesn't exist
-    If ws.Cells(1, 10).Value = "" Then
-        ws.Cells(1, 10).Value = "Invoice Valid"
-        ws.Cells(1, 10).Font.Bold = True
-    End If
-    
-    For i = 2 To lastRow
-        Dim invoiceNum As String
-        Dim isValid As Boolean
-        
-        invoiceNum = Trim(UCase(ws.Cells(i, 2).Value)) ' Column B
-        isValid = False
-        
-        ' Clean multiple invoice numbers (take first)
-        If InStr(invoiceNum, ",") > 0 Then
-            invoiceNum = Trim(Split(invoiceNum, ",")(0))
-            ws.Cells(i, 2).Value = invoiceNum
-        End If
-        
-        ' Validate invoice format
-        If Len(invoiceNum) >= 7 And Len(invoiceNum) <= 9 Then
-            If Left(invoiceNum, 1) = "P" Or Left(invoiceNum, 1) = "R" Then
-                Dim numPart As String
-                numPart = Mid(invoiceNum, 2)
-                If IsNumeric(numPart) Then
-                    isValid = True
-                End If
-            End If
-        End If
-        
-        ' Mark validation result
-        If isValid Then
-            ws.Cells(i, 10).Value = "VALID"
-            ws.Cells(i, 10).Interior.Color = RGB(144, 238, 144) ' Light green
-        Else
-            ws.Cells(i, 10).Value = "INVALID - Line " & i & " TBD manually"
-            ws.Cells(i, 10).Interior.Color = RGB(255, 182, 193) ' Light pink
-            ws.Cells(i, 2).Value = "Line " & i & " TBD manually"
-        End If
-    Next i
-    
-    ' Auto-fit columns
-    ws.Columns.AutoFit
-    
-    MsgBox "Invoice extraction completed!", vbInformation
-    
-End Sub`
-            },
-            dataValidator: {
-                title: "Data Validator Macro",
-                code: `Sub ValidateDataIntegrity()
-    '
-    ' Data Validator Macro
-    ' Checks for duplicates, missing data, and formatting issues
-    '
-    
-    Dim ws As Worksheet
-    Dim lastRow As Long
-    Dim lastCol As Long
-    Dim i As Long, j As Long
-    Dim validationReport As String
-    
-    Set ws = ActiveSheet
-    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+    ' Recalculate ranges after deletion
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
     lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
     
-    validationReport = "DATA VALIDATION REPORT" & vbCrLf & String(50, "=") & vbCrLf & vbCrLf
-    
-    ' Check for duplicate invoice numbers (Column B)
-    Dim duplicates As Long
-    duplicates = 0
-    
-    For i = 2 To lastRow
-        For j = i + 1 To lastRow
-            If ws.Cells(i, 2).Value <> "" And ws.Cells(i, 2).Value = ws.Cells(j, 2).Value Then
-                ws.Cells(i, 2).Interior.Color = RGB(255, 255, 0) ' Yellow highlight
-                ws.Cells(j, 2).Interior.Color = RGB(255, 255, 0)
-                duplicates = duplicates + 1
+    ' Trim whitespace from all cells
+    For i = 1 To lastRow
+        For j = 1 To lastCol
+            If Not IsEmpty(ws.Cells(i, j)) Then
+                ws.Cells(i, j).Value = Trim(ws.Cells(i, j).Value)
             End If
         Next j
     Next i
     
-    validationReport = validationReport & "Duplicate invoice numbers found: " & duplicates & vbCrLf & vbCrLf
+    ' Auto-fit all columns
+    ws.Columns.AutoFit
     
-    ' Check for missing required data
-    Dim missingData As Long
-    missingData = 0
+    ' Apply basic formatting
+    With ws.Range(ws.Cells(1, 1), ws.Cells(lastRow, lastCol))
+        .Font.Name = "Arial"
+        .Font.Size = 10
+        .Borders.LineStyle = xlContinuous
+        .Borders.Weight = xlThin
+    End With
     
-    For i = 2 To lastRow
-        Dim missingFields As String
-        missingFields = ""
+    ' Format header row if it exists
+    If lastRow > 0 Then
+        With ws.Range(ws.Cells(1, 1), ws.Cells(1, lastCol))
+            .Font.Bold = True
+            .Interior.Color = RGB(220, 220, 220)
+        End With
+    End If
+    
+    Application.ScreenUpdating = True
+    
+    MsgBox "Cleanup and formatting completed!", vbInformation
+End Sub`
+            },
+            sortSum: {
+                title: "Sort & Sum Macro",
+                code: `Sub SortAndSum()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim lastCol As Long
+    Dim dataRange As Range
+    Dim response As Integer
+    Dim sortCol As Integer
+    
+    Set ws = ActiveSheet
+    
+    ' Find the last row and column with data
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    
+    If lastRow <= 1 Then
+        MsgBox "No data to sort!", vbExclamation
+        Exit Sub
+    End If
+    
+    ' Ask user which column to sort by
+    sortCol = InputBox("Enter column number to sort by (1 for A, 2 for B, etc.):", "Sort Column", 1)
+    
+    If sortCol < 1 Or sortCol > lastCol Then
+        MsgBox "Invalid column number!", vbExclamation
+        Exit Sub
+    End If
+    
+    Set dataRange = ws.Range(ws.Cells(2, 1), ws.Cells(lastRow, lastCol))
+    
+    Application.ScreenUpdating = False
+    
+    ' Sort the data (excluding header row)
+    dataRange.Sort Key1:=ws.Cells(2, sortCol), Order1:=xlAscending, Header:=xlNo
+    
+    ' Ask if user wants to add sum row
+    response = MsgBox("Add sum row for numeric columns?", vbYesNo + vbQuestion, "Add Totals")
+    
+    If response = vbYes Then
+        Dim i As Integer
+        Dim sumRow As Long
+        sumRow = lastRow + 2
         
-        ' Check critical columns
-        If IsEmpty(ws.Cells(i, 2)) Then missingFields = missingFields & "Invoice Number, "  ' Column B
-        If IsEmpty(ws.Cells(i, 5)) Then missingFields = missingFields & "Customer Name, "   ' Column E
-        If IsEmpty(ws.Cells(i, 8)) Then missingFields = missingFields & "Amount, "          ' Column H
+        ' Add "Total:" label
+        ws.Cells(sumRow, 1).Value = "Total:"
+        ws.Cells(sumRow, 1).Font.Bold = True
         
-        If missingFields <> "" Then
-            missingData = missingData + 1
-            ws.Rows(i).Interior.Color = RGB(255, 182, 193) ' Light pink
-            
-            ' Add comment with missing fields
-            If ws.Cells(i, 1).Comment Is Nothing Then
-                ws.Cells(i, 1).AddComment "Missing: " & Left(missingFields, Len(missingFields) - 2)
+        ' Add sums for numeric columns
+        For i = 2 To lastCol
+            If IsNumeric(ws.Cells(2, i).Value) Then
+                ws.Cells(sumRow, i).Formula = "=SUM(" & ws.Range(ws.Cells(2, i), ws.Cells(lastRow, i)).Address & ")"
+                ws.Cells(sumRow, i).Font.Bold = True
             End If
-        End If
-    Next i
-    
-    validationReport = validationReport & "Rows with missing data: " & missingData & vbCrLf & vbCrLf
-    
-    MsgBox validationReport, vbInformation, "Data Validation Complete"
+        Next i
+        
+        ' Format sum row
+        With ws.Range(ws.Cells(sumRow, 1), ws.Cells(sumRow, lastCol))
+            .Borders(xlEdgeTop).LineStyle = xlContinuous
+            .Borders(xlEdgeTop).Weight = xlMedium
+        End With
+    End If
     
     ' Auto-fit columns
     ws.Columns.AutoFit
     
-End Sub`
-            },
-            columnOrganizer: {
-                title: "Column Organizer Macro",
-                code: `Sub OrganizeColumns()
-    '
-    ' Column Organizer Macro
-    ' Reorganizes columns based on business templates
-    '
+    Application.ScreenUpdating = True
     
-    Dim ws As Worksheet
-    Dim lastRow As Long
-    Dim lastCol As Long
-    
-    Set ws = ActiveSheet
-    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
-    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
-    
-    ' Standard column order for credit card processing
-    Dim standardHeaders As Variant
-    standardHeaders = Array("ID", "Invoice_Number", "Processing_Date", "Batch_ID", _
-                           "Customer_Name", "Card_Type", "Card_Number", "Settlement_Amount", _
-                           "Transaction_Date", "Status", "Notes")
-    
-    ' Create new organized worksheet
-    Dim newWS As Worksheet
-    Set newWS = ws.Parent.Worksheets.Add(After:=ws)
-    newWS.Name = "Organized_" & Format(Now, "mmddyyyy")
-    
-    ' Set up headers
-    Dim i As Integer
-    For i = 0 To UBound(standardHeaders)
-        newWS.Cells(1, i + 1).Value = standardHeaders(i)
-        newWS.Cells(1, i + 1).Font.Bold = True
-        newWS.Cells(1, i + 1).Interior.Color = RGB(200, 200, 200)
-    Next i
-    
-    ' Auto-fit columns
-    newWS.Columns.AutoFit
-    
-    ' Freeze header row
-    newWS.Rows("2:2").Select
-    ActiveWindow.FreezePanes = True
-    
-    newWS.Cells(1, 1).Select
-    
-    MsgBox "Column organization completed!" & vbCrLf & _
-           "New organized sheet: " & newWS.Name, vbInformation
-    
+    MsgBox "Sort and sum completed!", vbInformation
 End Sub`
             }
         };
 
         function showMacro(macroKey) {
+            console.log('showMacro called with key:', macroKey);
+            console.log('Available macros:', Object.keys(macros));
+            
             const macro = macros[macroKey];
             if (macro) {
+                console.log('Macro found:', macro.title);
                 macroTitle.textContent = macro.title;
                 macroCode.textContent = macro.code;
                 macroModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+            } else {
+                console.error('Macro not found for key:', macroKey);
             }
         }
 
@@ -503,33 +319,42 @@ End Sub`
             document.body.style.overflow = '';
         }
 
-        modalClose.addEventListener('click', closeModal);
-        macroModal.addEventListener('click', (e) => {
-            if (e.target === macroModal) closeModal();
-        });
+        // Initialize DOM elements and event listeners when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            macroModal = document.getElementById('macroModal');
+            modalClose = document.getElementById('modalClose');
+            macroTitle = document.getElementById('macroTitle');
+            macroCode = document.getElementById('macroCode');
+            copyMacroBtn = document.getElementById('copyMacroBtn');
 
-        copyMacroBtn.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(macroCode.textContent);
-                const originalText = copyMacroBtn.innerHTML;
-                copyMacroBtn.innerHTML = \`
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                    Copied!
-                \`;
-                setTimeout(() => {
-                    copyMacroBtn.innerHTML = originalText;
-                }, 2000);
-            } catch (err) {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = macroCode.textContent;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-            }
+            modalClose.addEventListener('click', closeModal);
+            macroModal.addEventListener('click', (e) => {
+                if (e.target === macroModal) closeModal();
+            });
+
+            copyMacroBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(macroCode.textContent);
+                    const originalText = copyMacroBtn.innerHTML;
+                    copyMacroBtn.innerHTML = \`
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                        Copied!
+                    \`;
+                    setTimeout(() => {
+                        copyMacroBtn.innerHTML = originalText;
+                    }, 2000);
+                } catch (err) {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = macroCode.textContent;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                }
+            });
         });
     </script>
     

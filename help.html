@@ -282,32 +282,47 @@
         // Initialize Lucide icons
         lucide.createIcons();
         
-        // Collapsible help sections
+        // Collapsible help sections with accordion behavior
         document.addEventListener('DOMContentLoaded', function() {
             const collapsibleHeaders = document.querySelectorAll('.help-section-header.collapsible');
             
-            // Start with first section expanded, others collapsed
-            collapsibleHeaders.forEach((header, index) => {
+            // Start with all sections collapsed
+            collapsibleHeaders.forEach((header) => {
                 const targetId = header.getAttribute('data-target');
                 const content = document.getElementById(targetId);
-                
-                if (index === 0) {
-                    // First section starts expanded
-                    header.classList.remove('collapsed');
-                    content.classList.remove('collapsed');
-                } else {
-                    // Other sections start collapsed
-                    header.classList.add('collapsed');
-                    content.classList.add('collapsed');
-                }
-                
+                header.classList.add('collapsed');
+                content.classList.add('collapsed');
+            });
+            
+            collapsibleHeaders.forEach((header) => {
                 header.addEventListener('click', function() {
+                    const targetId = header.getAttribute('data-target');
+                    const content = document.getElementById(targetId);
                     const isCollapsed = header.classList.contains('collapsed');
                     
                     if (isCollapsed) {
+                        // Close all other sections first (accordion behavior)
+                        collapsibleHeaders.forEach((otherHeader) => {
+                            if (otherHeader !== header) {
+                                const otherId = otherHeader.getAttribute('data-target');
+                                const otherContent = document.getElementById(otherId);
+                                otherHeader.classList.add('collapsed');
+                                otherContent.classList.add('collapsed');
+                            }
+                        });
+                        
                         // Expand this section
                         header.classList.remove('collapsed');
                         content.classList.remove('collapsed');
+                        
+                        // Scroll to the opened section after animation completes
+                        setTimeout(() => {
+                            header.scrollIntoView({ 
+                                behavior: 'smooth',
+                                block: 'start',
+                                inline: 'nearest'
+                            });
+                        }, 400); // Wait for CSS animation to complete
                     } else {
                         // Collapse this section
                         header.classList.add('collapsed');
