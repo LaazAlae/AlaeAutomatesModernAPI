@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlaeAutomates 2.0 - CC Batch Processing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Modern Navigation Bar -->
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="navigateTo('/')">
+                <span class="brand-text">AlaeAutomates</span>
+            </div>
+            <div class="nav-right">
+                <a href="https://alaeautomates.up.railway.app/" class="nav-item old-version" target="_blank">Old Version</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Secondary Navigation -->
+    <div class="secondary-nav">
+        <div class="secondary-nav-container">
+            <a href="monthly_statements.html" class="secondary-nav-item">Monthly Statements</a>
+            <a href="invoices.html" class="secondary-nav-item">Invoice Processing</a>
+            <a href="cc_batch.html" class="secondary-nav-item active">CC Batch Processing</a>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <div class="page-content">
+            <div class="page-header">
+                <h1 class="hero-main-title"><span class="title-red">CC Batch Processing</span></h1>
+                <p class="hero-description-text">Upload an Excel file with credit card data to generate an enhanced JavaScript automation script for Legacy Edge.</p>
+            </div>
+
+            <div class="page-body">
+                <div class="form-group">
+                    <label for="ccFile">Credit Card Excel File</label>
+                    <input type="file" id="ccFile" class="form-control" accept=".xlsx">
+                </div>
+
+                <button class="btn btn-primary" id="process-button">Generate Script</button>
+
+                <div id="progress-container" class="hidden mt-3">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p id="progress-text" class="text-center"></p>
+                </div>
+
+                <div id="results-container" class="hidden mt-3">
+                    <h3 class="tool-title">Generated Script</h3>
+                    <textarea id="script-output" class="form-control" rows="15" readonly></textarea>
+                    <button class="btn btn-secondary mt-2" id="copy-script-button">Copy Script</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const processBtn = document.getElementById('process-button');
+        const ccFileInput = document.getElementById('ccFile');
+        const progressContainer = document.getElementById('progress-container');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        const resultsContainer = document.getElementById('results-container');
+        const scriptOutput = document.getElementById('script-output');
+        const copyScriptBtn = document.getElementById('copy-script-button');
+
+        const API_BASE = 'https://alaeautomatesapi.up.railway.app';
+
+        processBtn.addEventListener('click', async () => {
+            progressContainer.classList.remove('hidden');
+            progressText.textContent = 'Uploading and processing...';
+            progressFill.style.width = '50%';
+
+            try {
+                const formData = new FormData();
+                formData.append('file', ccFileInput.files[0]);
+
+                const response = await fetch(`${API_BASE}/api/credit-card-batch`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.javascript_code) {
+                    progressText.textContent = 'Processing complete!';
+                    progressFill.style.width = '100%';
+                    scriptOutput.value = data.javascript_code;
+                    resultsContainer.classList.remove('hidden');
+                } else {
+                    progressText.textContent = 'An error occurred.';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                progressText.textContent = 'An error occurred.';
+            }
+        });
+
+        copyScriptBtn.addEventListener('click', () => {
+            scriptOutput.select();
+            document.execCommand('copy');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlaeAutomates 2.0 - Help & Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Modern Navigation Bar -->
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="navigateTo('/')">
+                <span class="brand-text">AlaeAutomates</span>
+            </div>
+            <div class="nav-right">
+                <a href="https://alaeautomates.up.railway.app/" class="nav-item old-version" target="_blank">Old Version</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <div class="page-content">
+            <div class="page-header">
+                <h1 class="hero-main-title"><span class="title-red">Help & Support</span></h1>
+                <p class="hero-description-text">Complete documentation for the AlaeAutomates API.</p>
+            </div>
+
+            <div class="page-body">
+                <div class="content-section">
+                    <div class="section-header">What This API Does</div>
+                    <div class="section-content">
+                        <p>This API provides three main services:</p>
+                        <ul>
+                            <li><strong>Statement Processing:</strong> Processes PDF bank statements and matches company names against a Do Not Mail (DNM) list from an Excel file.</li>
+                            <li><strong>Invoice Processing:</strong> Extracts invoice numbers from PDF files and splits them into separate documents.</li>
+                            <li><strong>Credit Card Batch Processing:</strong> Processes Excel files with credit card data and generates enhanced JavaScript automation code for Legacy Edge browsers.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">API Endpoints</div>
+                    <div class="section-content">
+                        <h4>Base URL</h4>
+                        <p>Production: <code>https://alaeautomatesapi.up.railway.app</code></p>
+                        <p>Local: <code>http://localhost:8000</code></p>
+
+                        <h4>Health Check</h4>
+                        <p><code>GET /health</code></p>
+
+                        <h4>Statement Processing</h4>
+                        <ul>
+                            <li><code>POST /api/statement-processor</code> - Create Session</li>
+                            <li><code>POST /api/statement-processor/{session_id}/upload</code> - Upload Files</li>
+                            <li><code>POST /api/statement-processor/{session_id}/process</code> - Process Files</li>
+                            <li><code>GET /api/statement-processor/{session_id}/questions</code> - Get Questions</li>
+                            <li><code>POST /api/statement-processor/{session_id}/answers</code> - Submit Answers</li>
+                            <li><code>GET /api/statement-processor/{session_id}/download</code> - Download Results</li>
+                            <li><code>GET /api/statement-processor/{session_id}/status</code> - Session Status</li>
+                        </ul>
+
+                        <h4>Invoice Processing</h4>
+                        <ul>
+                            <li><code>POST /api/invoice-processor</code> - Upload and Process</li>
+                            <li><code>GET /api/invoice-processor/downloads/{zip_filename}</code> - Download ZIP</li>
+                        </ul>
+
+                        <h4>Credit Card Batch Processing</h4>
+                        <ul>
+                            <li><code>POST /api/credit-card-batch</code> - Upload and Process</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.section-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>

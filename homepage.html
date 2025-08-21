@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlaeAutomates 2.0 - Professional Business Automation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="homepage">
+    <!-- Modern Navigation Bar -->
+    <nav class="modern-nav homepage-nav">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="navigateTo('/')">
+                <span class="brand-text">AlaeAutomates</span>
+            </div>
+            <div class="nav-right">
+                <a href="https://alaeautomates.up.railway.app/" class="nav-item old-version" target="_blank">Old Version</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Homepage content -->
+    <div class="homepage-container">
+    <!-- Animated background elements -->
+    <div class="background-animation">
+        <div class="floating-element element-1"></div>
+        <div class="floating-element element-2"></div>
+        <div class="floating-element element-3"></div>
+        <div class="floating-element element-4"></div>
+        <div class="floating-element element-5"></div>
+        <div class="floating-element element-6"></div>
+        
+        <!-- Small fire-like dots -->
+        <div class="fire-dot fire-dot-1"></div>
+        <div class="fire-dot fire-dot-2"></div>
+        <div class="fire-dot fire-dot-3"></div>
+        <div class="fire-dot fire-dot-4"></div>
+        <div class="fire-dot fire-dot-5"></div>
+        <div class="fire-dot fire-dot-6"></div>
+        <div class="fire-dot fire-dot-7"></div>
+        <div class="fire-dot fire-dot-8"></div>
+        
+        <!-- White floating dots -->
+        <div class="white-dot white-dot-1"></div>
+        <div class="white-dot white-dot-2"></div>
+        <div class="white-dot white-dot-3"></div>
+        <div class="white-dot white-dot-4"></div>
+        <div class="white-dot white-dot-5"></div>
+        <div class="white-dot white-dot-6"></div>
+        
+        <!-- Large breathing circles for brighter background -->
+        <div class="large-circle circle-1"></div>
+        <div class="large-circle circle-2"></div>
+        <div class="large-circle circle-3"></div>
+        <div class="large-circle circle-4"></div>
+        <div class="large-circle circle-5"></div>
+        <div class="large-circle circle-6"></div>
+    </div>
+    
+    <!-- Hero section -->
+    <div class="hero-section-fullscreen">
+        <div class="hero-content-center">
+            <div class="business-badge">Business Automation Suite</div>
+            <h1 class="hero-main-title">
+                <span class="title-red">Automate Your Business</span><br>
+                <span class="title-white">Processes Effortlessly</span>
+            </h1>
+            <p class="hero-description-text">
+                Professional automation tools designed for simplicity and efficiency.<br>
+                Process documents, manage data, and streamline workflows<br>
+                with just a few clicks.
+            </p>
+            <button class="cta-button-large" onclick="scrollToTools()">Get Started</button>
+        </div>
+    </div>
+    
+    <!-- Tools section (hidden initially, shown after scroll) -->
+    <div class="tools-section-hidden" id="tools-section">
+        <div class="tools-container">
+            <h2 class="tools-title fade-in-element">Available Tools</h2>
+            <div class="tools-grid-main">
+                <div class="tool-card fade-in-element" onclick="navigateTo('monthly_statements.html')" data-delay="0">
+                    <div class="tool-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"></path>
+                            <path d="m19 9-5 5-4-4-3 3"></path>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Monthly Statements</h3>
+                    <p class="tool-description">Process and organize monthly financial statements with automated categorization.</p>
+                </div>
+                
+                <div class="tool-card fade-in-element" onclick="navigateTo('invoices.html')" data-delay="100">
+                    <div class="tool-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <path d="M14,2 L14,8 L20,8"></path>
+                            <path d="M16 13H8"></path>
+                            <path d="M16 17H8"></path>
+                            <path d="M10 9H8"></path>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Invoice Processing</h3>
+                    <p class="tool-description">Extract and process invoice data with intelligent document parsing.</p>
+                </div>
+                
+                <div class="tool-card fade-in-element" onclick="navigateTo('excel_macros.html')" data-delay="200">
+                    <div class="tool-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 7V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"></path>
+                            <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"></path>
+                            <path d="M9 7v10"></path>
+                            <path d="M15 7v10"></path>
+                            <path d="M3 11h18"></path>
+                            <path d="M3 15h18"></path>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Excel Macros</h3>
+                    <p class="tool-description">Clean, format, sort and calculate Excel data with powerful automation macros.</p>
+                </div>
+                
+                <div class="tool-card fade-in-element" onclick="navigateTo('cc_batch.html')" data-delay="300">
+                    <div class="tool-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">CC Batch Processing</h3>
+                    <p class="tool-description">Create and process credit card batch files for accounting systems.</p>
+                </div>
+            </div>
+            
+            <div class="tools-grid-help">
+                <div class="tool-card fade-in-element" onclick="navigateTo('help.html')" data-delay="400">
+                    <div class="tool-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="m9,9a3,3 0 1,1 6,0c0,2 -3,3 -3,3"></path>
+                            <path d="m12,17l.01,0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Help & Support</h3>
+                    <p class="tool-description">Get assistance and learn how to use all platform features effectively.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

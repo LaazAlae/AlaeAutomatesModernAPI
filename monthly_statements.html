@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlaeAutomates 2.0 - Monthly Statements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Modern Navigation Bar -->
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="navigateTo('/')">
+                <span class="brand-text">AlaeAutomates</span>
+            </div>
+            <div class="nav-right">
+                <a href="https://alaeautomates.up.railway.app/" class="nav-item old-version" target="_blank">Old Version</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Secondary Navigation -->
+    <div class="secondary-nav">
+        <div class="secondary-nav-container">
+            <a href="monthly_statements.html" class="secondary-nav-item active">Monthly Statements</a>
+            <a href="invoices.html" class="secondary-nav-item">Invoice Processing</a>
+            <a href="cc_batch.html" class="secondary-nav-item">CC Batch Processing</a>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <div class="page-content">
+            <div class="page-header">
+                <h1 class="hero-main-title"><span class="title-red">Statement Processing</span></h1>
+                <p class="hero-description-text">Upload a PDF bank statement and an Excel DNM list to categorize and split the document.</p>
+            </div>
+
+            <div class="page-body">
+                <div class="form-group">
+                    <label for="pdfFile">PDF Statement</label>
+                    <input type="file" id="pdfFile" class="form-control" accept=".pdf">
+                </div>
+
+                <div class="form-group">
+                    <label for="excelFile">Excel DNM List</label>
+                    <input type="file" id="excelFile" class="form-control" accept=".xlsx">
+                </div>
+
+                <button class="btn btn-primary" id="process-button">Process Files</button>
+
+                <div id="progress-container" class="hidden mt-3">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p id="progress-text" class="text-center"></p>
+                </div>
+
+                <div id="questions-container" class="hidden mt-3">
+                    <h3 class="tool-title">Manual Review</h3>
+                    <div id="questions"></div>
+                    <button class="btn btn-primary mt-3" id="submit-answers-button">Submit Answers</button>
+                </div>
+
+                <div id="results-container" class="hidden mt-3">
+                    <h3 class="tool-title">Results</h3>
+                    <button class="btn btn-primary" id="download-results-button">Download Results</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const processBtn = document.getElementById('process-button');
+        const pdfFileInput = document.getElementById('pdfFile');
+        const excelFileInput = document.getElementById('excelFile');
+        const progressContainer = document.getElementById('progress-container');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        const questionsContainer = document.getElementById('questions-container');
+        const questionsDiv = document.getElementById('questions');
+        const submitAnswersBtn = document.getElementById('submit-answers-button');
+        const resultsContainer = document.getElementById('results-container');
+        const downloadResultsBtn = document.getElementById('download-results-button');
+
+        const API_BASE = 'https://alaeautomatesapi.up.railway.app';
+        let sessionId = null;
+
+        processBtn.addEventListener('click', async () => {
+            progressContainer.classList.remove('hidden');
+            progressText.textContent = 'Creating session...';
+            progressFill.style.width = '10%';
+
+            try {
+                const sessionResponse = await fetch(`${API_BASE}/api/statement-processor`, { method: 'POST' });
+                const sessionData = await sessionResponse.json();
+                sessionId = sessionData.session_id;
+
+                progressText.textContent = 'Uploading files...';
+                progressFill.style.width = '30%';
+
+                const formData = new FormData();
+                formData.append('pdf', pdfFileInput.files[0]);
+                formData.append('excel', excelFileInput.files[0]);
+
+                await fetch(`${API_BASE}/api/statement-processor/${sessionId}/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                progressText.textContent = 'Processing files...';
+                progressFill.style.width = '60%';
+
+                await fetch(`${API_BASE}/api/statement-processor/${sessionId}/process`, { method: 'POST' });
+
+                progressText.textContent = 'Fetching questions...';
+                progressFill.style.width = '80%';
+
+                const questionsResponse = await fetch(`${API_BASE}/api/statement-processor/${sessionId}/questions`);
+                const questionsData = await questionsResponse.json();
+
+                if (questionsData.questions.length > 0) {
+                    displayQuestions(questionsData.questions);
+                    progressContainer.classList.add('hidden');
+                    questionsContainer.classList.remove('hidden');
+                } else {
+                    progressText.textContent = 'Processing complete!';
+                    progressFill.style.width = '100%';
+                    resultsContainer.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                progressText.textContent = 'An error occurred.';
+            }
+        });
+
+        function displayQuestions(questions) {
+            questionsDiv.innerHTML = '';
+            questions.forEach(q => {
+                const questionEl = document.createElement('div');
+                questionEl.innerHTML = `
+                    <p>Is "${q.company_name}" the same as "${q.similar_to}"?</p>
+                    <label><input type="radio" name="${q.id}" value="yes"> Yes</label>
+                    <label><input type="radio" name="${q.id}" value="no"> No</label>
+                    <label><input type="radio" name="${q.id}" value="skip"> Skip</label>
+                `;
+                questionsDiv.appendChild(questionEl);
+            });
+        }
+
+        submitAnswersBtn.addEventListener('click', async () => {
+            const answers = {};
+            const questionElements = questionsDiv.querySelectorAll('input[type="radio"]:checked');
+            questionElements.forEach(input => {
+                const questionId = input.name;
+                answers[questionId] = input.value;
+            });
+
+            await fetch(`${API_BASE}/api/statement-processor/${sessionId}/answers`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ answers })
+            });
+
+            questionsContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+        });
+
+        downloadResultsBtn.addEventListener('click', async () => {
+            const response = await fetch(`${API_BASE}/api/statement-processor/${sessionId}/download`);
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const contentType = response.headers.get('content-type');
+            const filename = contentType?.includes('zip') ? `results_${sessionId.substring(0, 8)}.zip` : `results_${sessionId.substring(0, 8)}.txt`;
+            a.download = filename;
+            a.click();
+        });
+    </script>
+</body>
+</html>

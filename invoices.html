@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlaeAutomates 2.0 - Invoice Processing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Modern Navigation Bar -->
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="navigateTo('/')">
+                <span class="brand-text">AlaeAutomates</span>
+            </div>
+            <div class="nav-right">
+                <a href="https://alaeautomates.up.railway.app/" class="nav-item old-version" target="_blank">Old Version</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Secondary Navigation -->
+    <div class="secondary-nav">
+        <div class="secondary-nav-container">
+            <a href="monthly_statements.html" class="secondary-nav-item">Monthly Statements</a>
+            <a href="invoices.html" class="secondary-nav-item active">Invoice Processing</a>
+            <a href="cc_batch.html" class="secondary-nav-item">CC Batch Processing</a>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <div class="page-content">
+            <div class="page-header">
+                <h1 class="hero-main-title"><span class="title-red">Invoice Processing</span></h1>
+                <p class="hero-description-text">Upload a PDF file containing one or more invoices to automatically split them into separate documents.</p>
+            </div>
+
+            <div class="page-body">
+                <div class="form-group">
+                    <label for="invoiceFile">Invoice PDF</label>
+                    <input type="file" id="invoiceFile" class="form-control" accept=".pdf">
+                </div>
+
+                <button class="btn btn-primary" id="process-button">Process Invoices</button>
+
+                <div id="progress-container" class="hidden mt-3">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p id="progress-text" class="text-center"></p>
+                </div>
+
+                <div id="results-container" class="hidden mt-3">
+                    <h3 class="tool-title">Results</h3>
+                    <p id="result-message"></p>
+                    <a href="#" class="btn btn-primary" id="download-zip-button" target="_blank">Download ZIP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const processBtn = document.getElementById('process-button');
+        const invoiceFileInput = document.getElementById('invoiceFile');
+        const progressContainer = document.getElementById('progress-container');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        const resultsContainer = document.getElementById('results-container');
+        const resultMessage = document.getElementById('result-message');
+        const downloadZipBtn = document.getElementById('download-zip-button');
+
+        const API_BASE = 'https://alaeautomatesapi.up.railway.app';
+
+        processBtn.addEventListener('click', async () => {
+            progressContainer.classList.remove('hidden');
+            progressText.textContent = 'Uploading and processing...';
+            progressFill.style.width = '50%';
+
+            try {
+                const formData = new FormData();
+                formData.append('file', invoiceFileInput.files[0]);
+
+                const response = await fetch(`${API_BASE}/api/invoice-processor`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    progressText.textContent = 'Processing complete!';
+                    progressFill.style.width = '100%';
+                    resultMessage.textContent = data.message;
+                    downloadZipBtn.href = `${API_BASE}${data.download_url}`;
+                    resultsContainer.classList.remove('hidden');
+                } else {
+                    progressText.textContent = 'An error occurred.';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                progressText.textContent = 'An error occurred.';
+            }
+        });
+    </script>
+</body>
+</html>
