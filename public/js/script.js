@@ -433,9 +433,13 @@ class ScrollManager {
 // Legacy navigation function (for backward compatibility)
 function navigateTo(url) {
     if (url === '/') {
-        window.location.href = 'homepage.html';
-    } else {
+        window.location.href = '/homepage.html';
+    } else if (url.startsWith('/')) {
+        // Already absolute path
         window.location.href = url;
+    } else {
+        // Make relative paths absolute
+        window.location.href = '/' + url;
     }
 }
 

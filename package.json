@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js",
+    "dev": "node dev-server.js",
+    "production": "node server.js",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
