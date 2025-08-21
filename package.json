@@ -1,0 +1,20 @@
+{
+  "name": "alaeautomates-frontend",
+  "version": "1.0.0",
+  "description": "AlaeAutomates 2.0 - Professional Business Automation Frontend",
+  "main": "homepage.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "path": "^0.12.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["automation", "business", "static"],
+  "author": "AlaeAutomates",
+  "license": "MIT"
+}
