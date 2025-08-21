@@ -6,8 +6,19 @@
     <title>AlaeAutomates 2.0 - Help & Support</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+    <!-- Mobile Block Message -->
+    <div class="mobile-block">
+        <div class="mobile-block-content">
+            <i data-lucide="monitor" class="icon"></i>
+            <h1>Desktop Only</h1>
+            <p>This application is designed for desktop use only. Please access it from a computer with a larger screen for the best experience.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Minimum screen width required: 768px</p>
+        </div>
+    </div>
+
     <!-- Modern Navigation Bar -->
     <nav class="modern-nav">
         <div class="nav-container">
@@ -20,57 +31,245 @@
         </div>
     </nav>
 
-    <div class="page-container">
-        <div class="page-content">
-            <div class="page-header">
-                <h1 class="hero-main-title"><span class="title-red">Help & Support</span></h1>
-                <p class="hero-description-text">Complete documentation for the AlaeAutomates API.</p>
-            </div>
+    <div class="feature-page-container">
+        <!-- Background Animation -->
+        <div class="feature-background-animation">
+            <div class="feature-floating-element feature-element-1"></div>
+            <div class="feature-floating-element feature-element-2"></div>
+            <div class="feature-floating-element feature-element-3"></div>
+            <div class="feature-floating-element feature-element-4"></div>
+            
+            <div class="feature-fire-dot feature-fire-dot-1"></div>
+            <div class="feature-fire-dot feature-fire-dot-2"></div>
+            <div class="feature-fire-dot feature-fire-dot-3"></div>
+            <div class="feature-fire-dot feature-fire-dot-4"></div>
+            <div class="feature-fire-dot feature-fire-dot-5"></div>
+            <div class="feature-fire-dot feature-fire-dot-6"></div>
+            
+            <div class="feature-white-dot feature-white-dot-1"></div>
+            <div class="feature-white-dot feature-white-dot-2"></div>
+            <div class="feature-white-dot feature-white-dot-3"></div>
+            <div class="feature-white-dot feature-white-dot-4"></div>
+        </div>
 
-            <div class="page-body">
-                <div class="content-section">
-                    <div class="section-header">What This API Does</div>
-                    <div class="section-content">
-                        <p>This API provides three main services:</p>
-                        <ul>
-                            <li><strong>Statement Processing:</strong> Processes PDF bank statements and matches company names against a Do Not Mail (DNM) list from an Excel file.</li>
-                            <li><strong>Invoice Processing:</strong> Extracts invoice numbers from PDF files and splits them into separate documents.</li>
-                            <li><strong>Credit Card Batch Processing:</strong> Processes Excel files with credit card data and generates enhanced JavaScript automation code for Legacy Edge browsers.</li>
-                        </ul>
+        <div class="feature-content">
+            <div class="feature-card">
+                <div class="help-header">
+                    <h1><i data-lucide="help-circle" class="icon" style="margin-right: 12px;"></i>Help & Support</h1>
+                    <p>Learn how to use all AlaeAutomates features effectively</p>
+                </div>
+
+                <div class="help-grid">
+                    <!-- Monthly Statement Separator -->
+                    <div class="help-section">
+                        <div class="help-section-header collapsible" data-target="monthly-statements">
+                            <i data-lucide="file-text" class="icon"></i>
+                            <h2>Monthly Statement Separator</h2>
+                            <i data-lucide="chevron-down" class="icon collapse-icon"></i>
+                        </div>
+                        
+                        <div class="help-content collapsible-content" id="monthly-statements">
+                            <h3>What it does:</h3>
+                            <p>Automatically processes monthly statement PDFs and separates them into different categories (DNM, Foreign, National Single, National Multi) based on company names and similarity matching.</p>
+                            
+                            <h3>When to use:</h3>
+                            <ul>
+                                <li>You have a monthly statement PDF with multiple companies</li>
+                                <li>You need to separate statements by company type</li>
+                                <li>You have a "Do Not Mail" (DNM) Excel list for reference</li>
+                            </ul>
+                            
+                            <h3>Required files:</h3>
+                            <ul>
+                                <li><strong>PDF file:</strong> Containing monthly statements</li>
+                                <li><strong>Excel file:</strong> With DNM (Do Not Mail) company list</li>
+                            </ul>
+                            
+                            <h3>Common issues:</h3>
+                            <ul>
+                                <li><strong>Processing fails:</strong> Check that both PDF and Excel files are valid and not corrupted</li>
+                                <li><strong>No questions appear:</strong> The system automatically categorized all statements</li>
+                                <li><strong>Wrong categorization:</strong> Update your DNM Excel list with more accurate company names</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Invoice Separator -->
+                    <div class="help-section">
+                        <div class="help-section-header collapsible" data-target="invoice-separator">
+                            <i data-lucide="scissors" class="icon"></i>
+                            <h2>Invoice Separator</h2>
+                            <i data-lucide="chevron-down" class="icon collapse-icon"></i>
+                        </div>
+                        
+                        <div class="help-content collapsible-content" id="invoice-separator">
+                            <h3>What it does:</h3>
+                            <p>Scans PDF files for invoice numbers (pattern: P/R followed by 6-8 digits) and automatically splits the PDF into separate files for each invoice.</p>
+                            
+                            <h3>When to use:</h3>
+                            <ul>
+                                <li>You have a large PDF with multiple invoices</li>
+                                <li>You need individual PDF files for each invoice</li>
+                                <li>Invoices follow the standard numbering format (P123456 or R12345678)</li>
+                            </ul>
+                            
+                            <h3>Supported formats:</h3>
+                            <ul>
+                                <li>Invoice numbers starting with <strong>P</strong> or <strong>R</strong></li>
+                                <li>Followed by 6, 7, or 8 digits</li>
+                                <li><strong>Examples:</strong> P130587, R1317024, R13221789</li>
+                            </ul>
+                            
+                            <h3>Common issues:</h3>
+                            <ul>
+                                <li><strong>"No invoices found":</strong> Check if invoice numbers match the expected format</li>
+                                <li><strong>Missing invoices:</strong> Some invoices might use different numbering formats</li>
+                                <li><strong>Duplicate invoices:</strong> Multiple pages with the same invoice number will be combined</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Excel Macros -->
+                    <div class="help-section">
+                        <div class="help-section-header collapsible" data-target="excel-macros">
+                            <i data-lucide="table" class="icon"></i>
+                            <h2>Excel Macros</h2>
+                            <i data-lucide="chevron-down" class="icon collapse-icon"></i>
+                        </div>
+                        
+                        <div class="help-content collapsible-content" id="excel-macros">
+                            <h3>What they do:</h3>
+                            <p>VBA macros that automate common Excel data cleaning and formatting tasks.</p>
+                            
+                            <div class="macro-types">
+                                <h4><i data-lucide="wand-2" class="icon" style="width: 16px; height: 16px; margin-right: 8px;"></i>Clean-up & Format Macro:</h4>
+                                <ul>
+                                    <li>Removes empty rows and columns</li>
+                                    <li>Trims whitespace from cells</li>
+                                    <li>Applies consistent formatting</li>
+                                    <li>Auto-fits column widths</li>
+                                </ul>
+                                
+                                <h4><i data-lucide="bar-chart" class="icon" style="width: 16px; height: 16px; margin-right: 8px;"></i>Sort & Sum Macro:</h4>
+                                <ul>
+                                    <li>Sorts data by specified column</li>
+                                    <li>Adds sum totals for numeric columns</li>
+                                    <li>Preserves header formatting</li>
+                                </ul>
+                            </div>
+                            
+                            <h3>Installation steps:</h3>
+                            <ol>
+                                <li>Enable macros in Excel (File > Options > Trust Center)</li>
+                                <li>Press <kbd>Alt+F11</kbd> to open VBA Editor</li>
+                                <li>Insert > Module</li>
+                                <li>Paste the macro code</li>
+                                <li>Press <kbd>Alt+F8</kbd> to run macros</li>
+                            </ol>
+                            
+                            <h3>Common issues:</h3>
+                            <ul>
+                                <li><strong>Macros disabled:</strong> Enable macros in Excel security settings</li>
+                                <li><strong>Syntax errors:</strong> Make sure to copy the complete macro code</li>
+                                <li><strong>Data corruption:</strong> Always save a backup before running macros</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- CC Batch -->
+                    <div class="help-section">
+                        <div class="help-section-header collapsible" data-target="cc-batch">
+                            <i data-lucide="credit-card" class="icon"></i>
+                            <h2>Create CC Batch</h2>
+                            <i data-lucide="chevron-down" class="icon collapse-icon"></i>
+                        </div>
+                        
+                        <div class="help-content collapsible-content" id="cc-batch">
+                            <h3>What it does:</h3>
+                            <p>Generates JavaScript automation code for batch processing credit card payments in web forms. The code automatically fills forms and navigates through payment processing pages.</p>
+                            
+                            <h3>When to use:</h3>
+                            <ul>
+                                <li>You have multiple payments to process</li>
+                                <li>Data is already formatted (invoice, payment method, amount, customer)</li>
+                                <li>You need to speed up repetitive data entry</li>
+                            </ul>
+                            
+                            <h3>Data format required:</h3>
+                            <p>Tab-separated or space-separated columns:</p>
+                            <ul>
+                                <li><strong>Column 1:</strong> Invoice Number (e.g., R130587)</li>
+                                <li><strong>Column 2:</strong> Payment Method (e.g., AMEX-1006)</li>
+                                <li><strong>Column 3:</strong> Amount (e.g., 105.00)</li>
+                                <li><strong>Column 4:</strong> Customer Name (e.g., John Smith)</li>
+                            </ul>
+                            
+                            <h3>How to use generated code:</h3>
+                            <ol>
+                                <li>Copy the generated JavaScript code</li>
+                                <li>Navigate to your payment processing website</li>
+                                <li>Open browser console (<kbd>F12</kbd>)</li>
+                                <li>Paste and execute the code</li>
+                                <li>Type <code>run()</code> on each page to continue automation</li>
+                            </ol>
+                            
+                            <h3>Common issues:</h3>
+                            <ul>
+                                <li><strong>Code not working:</strong> Check if website structure has changed</li>
+                                <li><strong>Fields not filling:</strong> Verify data format matches expected columns</li>
+                                <li><strong>Console errors:</strong> Some websites block JavaScript automation</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div class="content-section">
-                    <div class="section-header">API Endpoints</div>
-                    <div class="section-content">
-                        <h4>Base URL</h4>
-                        <p>Production: <code>https://alaeautomatesapi.up.railway.app</code></p>
-                        <p>Local: <code>http://localhost:8000</code></p>
-
-                        <h4>Health Check</h4>
-                        <p><code>GET /health</code></p>
-
-                        <h4>Statement Processing</h4>
-                        <ul>
-                            <li><code>POST /api/statement-processor</code> - Create Session</li>
-                            <li><code>POST /api/statement-processor/{session_id}/upload</code> - Upload Files</li>
-                            <li><code>POST /api/statement-processor/{session_id}/process</code> - Process Files</li>
-                            <li><code>GET /api/statement-processor/{session_id}/questions</code> - Get Questions</li>
-                            <li><code>POST /api/statement-processor/{session_id}/answers</code> - Submit Answers</li>
-                            <li><code>GET /api/statement-processor/{session_id}/download</code> - Download Results</li>
-                            <li><code>GET /api/statement-processor/{session_id}/status</code> - Session Status</li>
-                        </ul>
-
-                        <h4>Invoice Processing</h4>
-                        <ul>
-                            <li><code>POST /api/invoice-processor</code> - Upload and Process</li>
-                            <li><code>GET /api/invoice-processor/downloads/{zip_filename}</code> - Download ZIP</li>
-                        </ul>
-
-                        <h4>Credit Card Batch Processing</h4>
-                        <ul>
-                            <li><code>POST /api/credit-card-batch</code> - Upload and Process</li>
-                        </ul>
+                <!-- General Troubleshooting -->
+                <div class="help-section troubleshooting">
+                    <div class="help-section-header collapsible" data-target="troubleshooting">
+                        <i data-lucide="wrench" class="icon"></i>
+                        <h2>General Troubleshooting</h2>
+                        <i data-lucide="chevron-down" class="icon collapse-icon"></i>
+                    </div>
+                    
+                    <div class="help-content collapsible-content" id="troubleshooting">
+                        <div class="troubleshooting-grid">
+                            <div class="troubleshooting-item">
+                                <h4><i data-lucide="upload" class="icon" style="width: 16px; height: 16px; margin-right: 8px;"></i>File Upload Issues:</h4>
+                                <ul>
+                                    <li>Check file size limits (usually under 50MB)</li>
+                                    <li>Ensure files are not corrupted</li>
+                                    <li>Use supported file formats only</li>
+                                    <li>Close files before uploading (Excel files should not be open)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="troubleshooting-item">
+                                <h4><i data-lucide="monitor" class="icon" style="width: 16px; height: 16px; margin-right: 8px;"></i>Browser Compatibility:</h4>
+                                <ul>
+                                    <li>Use modern browsers (Chrome, Firefox, Safari, Edge)</li>
+                                    <li>Enable JavaScript</li>
+                                    <li>Clear browser cache if experiencing issues</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="troubleshooting-item">
+                                <h4><i data-lucide="zap" class="icon" style="width: 16px; height: 16px; margin-right: 8px;"></i>Performance Tips:</h4>
+                                <ul>
+                                    <li>Process smaller batches for better performance</li>
+                                    <li>Close unnecessary browser tabs</li>
+                                    <li>Ensure stable internet connection</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="troubleshooting-item">
+                                <h4><i data-lucide="shield" class="icon" style="width: 16px; height: 16px; margin-right: 8px;"></i>Data Security:</h4>
+                                <ul>
+                                    <li>Files are processed locally when possible</li>
+                                    <li>Temporary files are automatically cleaned up</li>
+                                    <li>No data is permanently stored on servers</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,11 +277,43 @@
     </div>
 
     <script src="script.js"></script>
+    
     <script>
-        document.querySelectorAll('.section-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Collapsible help sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const collapsibleHeaders = document.querySelectorAll('.help-section-header.collapsible');
+            
+            // Start with first section expanded, others collapsed
+            collapsibleHeaders.forEach((header, index) => {
+                const targetId = header.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                
+                if (index === 0) {
+                    // First section starts expanded
+                    header.classList.remove('collapsed');
+                    content.classList.remove('collapsed');
+                } else {
+                    // Other sections start collapsed
+                    header.classList.add('collapsed');
+                    content.classList.add('collapsed');
+                }
+                
+                header.addEventListener('click', function() {
+                    const isCollapsed = header.classList.contains('collapsed');
+                    
+                    if (isCollapsed) {
+                        // Expand this section
+                        header.classList.remove('collapsed');
+                        content.classList.remove('collapsed');
+                    } else {
+                        // Collapse this section
+                        header.classList.add('collapsed');
+                        content.classList.add('collapsed');
+                    }
+                });
             });
         });
     </script>

@@ -6,8 +6,23 @@
     <title>AlaeAutomates 2.0 - Professional Business Automation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body class="homepage">
+    <!-- Mobile Block Message -->
+    <div class="mobile-block">
+        <div class="mobile-block-content">
+            <svg class="icon" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h1>Desktop Only</h1>
+            <p>This application is designed for desktop use only. Please access it from a computer with a larger screen for the best experience.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Minimum screen width required: 768px</p>
+        </div>
+    </div>
+
     <!-- Modern Navigation Bar -->
     <nav class="modern-nav homepage-nav">
         <div class="nav-container">
@@ -132,23 +147,19 @@
                 </div>
             </div>
             
-            <div class="tools-grid-help">
-                <div class="tool-card fade-in-element" onclick="navigateTo('help.html')" data-delay="400">
-                    <div class="tool-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="m9,9a3,3 0 1,1 6,0c0,2 -3,3 -3,3"></path>
-                            <path d="m12,17l.01,0"></path>
-                        </svg>
-                    </div>
-                    <h3 class="tool-title">Help & Support</h3>
-                    <p class="tool-description">Get assistance and learn how to use all platform features effectively.</p>
-                </div>
+            <!-- Compact Help Button -->
+            <div class="help-button-compact" onclick="navigateTo('help.html')" title="Help & Support">
+                <i data-lucide="help-circle" class="icon"></i>
             </div>
         </div>
     </div>
 </div>
 
     <script src="script.js"></script>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 </body>
-</html>
+</html>   

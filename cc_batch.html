@@ -6,8 +6,23 @@
     <title>AlaeAutomates 2.0 - CC Batch Processing</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+    <!-- Mobile Block Message -->
+    <div class="mobile-block">
+        <div class="mobile-block-content">
+            <svg class="icon" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h1>Desktop Only</h1>
+            <p>This application is designed for desktop use only. Please access it from a computer with a larger screen for the best experience.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Minimum screen width required: 768px</p>
+        </div>
+    </div>
+
     <!-- Modern Navigation Bar -->
     <nav class="modern-nav">
         <div class="nav-container">
@@ -26,35 +41,93 @@
             <a href="monthly_statements.html" class="secondary-nav-item">Monthly Statements</a>
             <a href="invoices.html" class="secondary-nav-item">Invoice Processing</a>
             <a href="cc_batch.html" class="secondary-nav-item active">CC Batch Processing</a>
+            <a href="excel_macros.html" class="secondary-nav-item">Excel Macros</a>
         </div>
     </div>
 
-    <div class="page-container">
-        <div class="page-content">
-            <div class="page-header">
-                <h1 class="hero-main-title"><span class="title-red">CC Batch Processing</span></h1>
-                <p class="hero-description-text">Upload an Excel file with credit card data to generate an enhanced JavaScript automation script for Legacy Edge.</p>
-            </div>
+    <div class="feature-page-container">
+        <!-- Background Animation -->
+        <div class="feature-background-animation">
+            <div class="feature-floating-element feature-element-1"></div>
+            <div class="feature-floating-element feature-element-2"></div>
+            <div class="feature-floating-element feature-element-3"></div>
+            <div class="feature-floating-element feature-element-4"></div>
+            
+            <div class="feature-fire-dot feature-fire-dot-1"></div>
+            <div class="feature-fire-dot feature-fire-dot-2"></div>
+            <div class="feature-fire-dot feature-fire-dot-3"></div>
+            <div class="feature-fire-dot feature-fire-dot-4"></div>
+            <div class="feature-fire-dot feature-fire-dot-5"></div>
+            <div class="feature-fire-dot feature-fire-dot-6"></div>
+            
+            <div class="feature-white-dot feature-white-dot-1"></div>
+            <div class="feature-white-dot feature-white-dot-2"></div>
+            <div class="feature-white-dot feature-white-dot-3"></div>
+            <div class="feature-white-dot feature-white-dot-4"></div>
+        </div>
 
-            <div class="page-body">
-                <div class="form-group">
-                    <label for="ccFile">Credit Card Excel File</label>
-                    <input type="file" id="ccFile" class="form-control" accept=".xlsx">
-                </div>
-
-                <button class="btn btn-primary" id="process-button">Generate Script</button>
-
-                <div id="progress-container" class="hidden mt-3">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
+        <div class="feature-content">
+            <div class="feature-card">
+                <div class="form-group-enhanced">
+                    <label class="form-label-enhanced" for="ccFile">
+                        <svg class="icon" viewBox="0 0 24 24" style="display: inline; margin-right: 8px;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <rect x="8" y="13" width="8" height="4" rx="1"></rect>
+                            <path d="M10 15h4"></path>
+                            <path d="M10 17h4"></path>
+                        </svg>
+                        Credit Card Excel File
+                    </label>
+                    <div class="file-upload-area" id="ccUploadArea">
+                        <div class="file-upload-icon">
+                            <svg class="icon icon-large" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <rect x="8" y="13" width="8" height="4" rx="1"></rect>
+                                <path d="M10 15h4"></path>
+                                <path d="M10 17h4"></path>
+                            </svg>
+                        </div>
+                        <div class="file-upload-text">Drop Excel file here or click to browse</div>
+                        <div class="file-upload-hint">Supports .xlsx files with credit card batch data</div>
+                        <input type="file" id="ccFile" accept=".xlsx" style="display: none;">
                     </div>
-                    <p id="progress-text" class="text-center"></p>
                 </div>
 
-                <div id="results-container" class="hidden mt-3">
-                    <h3 class="tool-title">Generated Script</h3>
-                    <textarea id="script-output" class="form-control" rows="15" readonly></textarea>
-                    <button class="btn btn-secondary mt-2" id="copy-script-button">Copy Script</button>
+                <button class="btn-enhanced btn-primary-enhanced" id="process-button">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M9 12l2 2 4-4"></path>
+                        <path d="M21 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"></path>
+                        <path d="M3 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"></path>
+                        <circle cx="12" cy="12" r="10"></circle>
+                    </svg>
+                    Generate Automation Script
+                </button>
+
+                <div id="progress-container" class="progress-container-enhanced hidden">
+                    <div class="progress-bar-enhanced">
+                        <div class="progress-fill-enhanced" id="progress-fill"></div>
+                    </div>
+                    <p id="progress-text" class="progress-text-enhanced"></p>
+                </div>
+
+                <div id="results-container" class="results-container-enhanced hidden">
+                    <h3 style="color: #22c55e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                        Automation Script Generated
+                    </h3>
+                    <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.8);">Your JavaScript automation script is ready for Legacy Edge browsers.</p>
+                    <textarea id="script-output" class="form-control-enhanced" rows="15" readonly style="font-family: monospace; font-size: 0.9rem; margin-bottom: 1rem;"></textarea>
+                    <button class="btn-enhanced btn-secondary-enhanced" id="copy-script-button">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy to Clipboard
+                    </button>
                 </div>
             </div>
         </div>
@@ -64,6 +137,7 @@
     <script>
         const processBtn = document.getElementById('process-button');
         const ccFileInput = document.getElementById('ccFile');
+        const ccUploadArea = document.getElementById('ccUploadArea');
         const progressContainer = document.getElementById('progress-container');
         const progressFill = document.getElementById('progress-fill');
         const progressText = document.getElementById('progress-text');
@@ -73,7 +147,59 @@
 
         const API_BASE = 'https://alaeautomatesapi.up.railway.app';
 
+        // Drag and Drop Setup
+        function setupDragDrop(uploadArea, fileInput) {
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    updateUploadAreaState(uploadArea, files[0].name);
+                }
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    updateUploadAreaState(uploadArea, e.target.files[0].name);
+                }
+            });
+        }
+        
+        function updateUploadAreaState(uploadArea, fileName) {
+            uploadArea.classList.add('file-selected');
+            const textElement = uploadArea.querySelector('.file-upload-text');
+            textElement.textContent = `Selected: ${fileName}`;
+        }
+        
+        setupDragDrop(ccUploadArea, ccFileInput);
+
         processBtn.addEventListener('click', async () => {
+            // Validate that file is uploaded
+            if (!ccFileInput.files[0]) {
+                alert('Please upload an Excel file before processing.');
+                return;
+            }
+            
+            // Validate file type
+            const file = ccFileInput.files[0];
+            if (!file.name.toLowerCase().includes('.xlsx') && !file.name.toLowerCase().includes('.xls')) {
+                alert('Please upload a valid Excel file (.xlsx or .xls).');
+                return;
+            }
+            
             progressContainer.classList.remove('hidden');
             progressText.textContent = 'Uploading and processing...';
             progressFill.style.width = '50%';
@@ -103,10 +229,31 @@
             }
         });
 
-        copyScriptBtn.addEventListener('click', () => {
-            scriptOutput.select();
-            document.execCommand('copy');
+        copyScriptBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(scriptOutput.value);
+                // Provide visual feedback
+                const originalText = copyScriptBtn.innerHTML;
+                copyScriptBtn.innerHTML = `
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <polyline points="20,6 9,17 4,12"></polyline>
+                    </svg>
+                    Copied!
+                `;
+                setTimeout(() => {
+                    copyScriptBtn.innerHTML = originalText;
+                }, 2000);
+            } catch (err) {
+                // Fallback for older browsers
+                scriptOutput.select();
+                document.execCommand('copy');
+            }
         });
+    </script>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
     </script>
 </body>
 </html>

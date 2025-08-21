@@ -6,8 +6,19 @@
     <title>AlaeAutomates 2.0 - Monthly Statements</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+    <!-- Mobile Block Message -->
+    <div class="mobile-block">
+        <div class="mobile-block-content">
+            <i data-lucide="monitor" class="icon"></i>
+            <h1>Desktop Only</h1>
+            <p>This application is designed for desktop use only. Please access it from a computer with a larger screen for the best experience.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Minimum screen width required: 768px</p>
+        </div>
+    </div>
+
     <!-- Modern Navigation Bar -->
     <nav class="modern-nav">
         <div class="nav-container">
@@ -26,46 +37,156 @@
             <a href="monthly_statements.html" class="secondary-nav-item active">Monthly Statements</a>
             <a href="invoices.html" class="secondary-nav-item">Invoice Processing</a>
             <a href="cc_batch.html" class="secondary-nav-item">CC Batch Processing</a>
+            <a href="excel_macros.html" class="secondary-nav-item">Excel Macros</a>
         </div>
     </div>
 
-    <div class="page-container">
-        <div class="page-content">
-            <div class="page-header">
-                <h1 class="hero-main-title"><span class="title-red">Statement Processing</span></h1>
-                <p class="hero-description-text">Upload a PDF bank statement and an Excel DNM list to categorize and split the document.</p>
-            </div>
+    <div class="feature-page-container">
+        <!-- Background Animation -->
+        <div class="feature-background-animation">
+            <div class="feature-floating-element feature-element-1"></div>
+            <div class="feature-floating-element feature-element-2"></div>
+            <div class="feature-floating-element feature-element-3"></div>
+            <div class="feature-floating-element feature-element-4"></div>
+            
+            <div class="feature-fire-dot feature-fire-dot-1"></div>
+            <div class="feature-fire-dot feature-fire-dot-2"></div>
+            <div class="feature-fire-dot feature-fire-dot-3"></div>
+            <div class="feature-fire-dot feature-fire-dot-4"></div>
+            <div class="feature-fire-dot feature-fire-dot-5"></div>
+            <div class="feature-fire-dot feature-fire-dot-6"></div>
+            
+            <div class="feature-white-dot feature-white-dot-1"></div>
+            <div class="feature-white-dot feature-white-dot-2"></div>
+            <div class="feature-white-dot feature-white-dot-3"></div>
+            <div class="feature-white-dot feature-white-dot-4"></div>
+        </div>
 
-            <div class="page-body">
-                <div class="form-group">
-                    <label for="pdfFile">PDF Statement</label>
-                    <input type="file" id="pdfFile" class="form-control" accept=".pdf">
-                </div>
-
-                <div class="form-group">
-                    <label for="excelFile">Excel DNM List</label>
-                    <input type="file" id="excelFile" class="form-control" accept=".xlsx">
-                </div>
-
-                <button class="btn btn-primary" id="process-button">Process Files</button>
-
-                <div id="progress-container" class="hidden mt-3">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
+        <div class="feature-content">
+            <div class="feature-card">
+                <!-- Horizontal Upload Layout -->
+                <div class="horizontal-upload-layout">
+                    <div class="form-group-enhanced">
+                        <label class="form-label-enhanced" for="pdfFile">
+                            <svg class="icon" viewBox="0 0 24 24" style="display: inline; margin-right: 8px;">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <line x1="16" y1="15" x2="8" y2="15"></line>
+                            </svg>
+                            PDF Bank Statement
+                        </label>
+                        <div class="file-upload-area" id="pdfUploadArea">
+                            <div class="file-upload-icon">
+                                <svg class="icon icon-large" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <line x1="16" y1="15" x2="8" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div class="file-upload-text">Drop PDF file here or click to browse</div>
+                            <div class="file-upload-hint">Supports PDF files up to 50MB</div>
+                            <input type="file" id="pdfFile" accept=".pdf" style="display: none;">
+                        </div>
                     </div>
-                    <p id="progress-text" class="text-center"></p>
+
+                    <div class="form-group-enhanced">
+                        <label class="form-label-enhanced" for="excelFile">
+                            <svg class="icon" viewBox="0 0 24 24" style="display: inline; margin-right: 8px;">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <rect x="8" y="13" width="8" height="4" rx="1"></rect>
+                                <path d="M10 15h4"></path>
+                                <path d="M10 17h4"></path>
+                            </svg>
+                            Excel DNM List
+                        </label>
+                        <div class="file-upload-area" id="excelUploadArea">
+                            <div class="file-upload-icon">
+                                <svg class="icon icon-large" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                    <rect x="8" y="13" width="8" height="4" rx="1"></rect>
+                                    <path d="M10 15h4"></path>
+                                    <path d="M10 17h4"></path>
+                                </svg>
+                            </div>
+                            <div class="file-upload-text">Drop Excel file here or click to browse</div>
+                            <div class="file-upload-hint">Supports .xlsx files up to 10MB</div>
+                            <input type="file" id="excelFile" accept=".xlsx" style="display: none;">
+                        </div>
+                    </div>
                 </div>
 
-                <div id="questions-container" class="hidden mt-3">
-                    <h3 class="tool-title">Manual Review</h3>
-                    <div id="questions"></div>
-                    <button class="btn btn-primary mt-3" id="submit-answers-button">Submit Answers</button>
+                <!-- Centered Process Button -->
+                <div class="process-button-container">
+                    <button class="btn-enhanced btn-primary-enhanced" id="process-button">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="10,8 16,12 10,16 10,8"></polygon>
+                        </svg>
+                        Process Files
+                    </button>
                 </div>
+                    
+                <!-- Results Section -->
+                        <div id="progress-container" class="progress-container-enhanced hidden">
+                            <div class="progress-bar-enhanced">
+                                <div class="progress-fill-enhanced" id="progress-fill"></div>
+                            </div>
+                            <p id="progress-text" class="progress-text-enhanced"></p>
+                        </div>
 
-                <div id="results-container" class="hidden mt-3">
-                    <h3 class="tool-title">Results</h3>
-                    <button class="btn btn-primary" id="download-results-button">Download Results</button>
+                        <div id="questions-container" class="hidden">
+                            <button class="manual-review-btn" id="manual-review-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                                </svg>
+                                Some statements need manual review
+                            </button>
+                            <button class="skip-all-btn" id="skip-all-button">Skip All (Dev)</button>
+                        </div>
+
+                        <div id="results-container" class="results-container-enhanced hidden">
+                            <h3 style="color: #22c55e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <polyline points="20,6 9,17 4,12"></polyline>
+                                </svg>
+                                Processing Complete
+                            </h3>
+                            <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.8);">Your statements have been processed and are ready for download.</p>
+                            <button class="btn-enhanced btn-primary-enhanced" id="download-results-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7,10 12,15 17,10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download Results
+                            </button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions Modal -->
+    <div class="modal-overlay" id="questionsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Manual Review Required</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="question-progress">
+                    <span id="questionCounter">Question 1 of 5</span>
+                    <button class="skip-all-btn" id="modalSkipAll">Skip All</button>
+                </div>
+                <div id="questionContent"></div>
             </div>
         </div>
     </div>
@@ -75,19 +196,209 @@
         const processBtn = document.getElementById('process-button');
         const pdfFileInput = document.getElementById('pdfFile');
         const excelFileInput = document.getElementById('excelFile');
+        const pdfUploadArea = document.getElementById('pdfUploadArea');
+        const excelUploadArea = document.getElementById('excelUploadArea');
         const progressContainer = document.getElementById('progress-container');
         const progressFill = document.getElementById('progress-fill');
         const progressText = document.getElementById('progress-text');
         const questionsContainer = document.getElementById('questions-container');
-        const questionsDiv = document.getElementById('questions');
-        const submitAnswersBtn = document.getElementById('submit-answers-button');
+        const manualReviewBtn = document.getElementById('manual-review-button');
+        const skipAllBtn = document.getElementById('skip-all-button');
         const resultsContainer = document.getElementById('results-container');
         const downloadResultsBtn = document.getElementById('download-results-button');
+        const questionsModal = document.getElementById('questionsModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalSkipAll = document.getElementById('modalSkipAll');
+        const questionContent = document.getElementById('questionContent');
+        const questionCounter = document.getElementById('questionCounter');
 
         const API_BASE = 'https://alaeautomatesapi.up.railway.app';
         let sessionId = null;
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let answers = {};
+
+        // Drag and Drop Setup
+        function setupDragDrop(uploadArea, fileInput) {
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    updateUploadAreaState(uploadArea, files[0].name);
+                }
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    updateUploadAreaState(uploadArea, e.target.files[0].name);
+                }
+            });
+        }
+        
+        function updateUploadAreaState(uploadArea, fileName) {
+            uploadArea.classList.add('file-selected');
+            const textElement = uploadArea.querySelector('.file-upload-text');
+            textElement.textContent = `Selected: ${fileName}`;
+        }
+        
+        setupDragDrop(pdfUploadArea, pdfFileInput);
+        setupDragDrop(excelUploadArea, excelFileInput);
+
+        // Modal Functions
+        function openModal() {
+            questionsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            questionsModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function displayCurrentQuestion() {
+            if (currentQuestionIndex >= currentQuestions.length) {
+                submitAllAnswers();
+                return;
+            }
+            
+            const question = currentQuestions[currentQuestionIndex];
+            questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+            
+            questionContent.innerHTML = `
+                <div class="question-card">
+                    <div class="company-comparison">
+                        <div>
+                            <strong>Statement Company:</strong>
+                            <div class="company-name">${question.company_name}</div>
+                        </div>
+                        <div>
+                            <strong>Similar to DNM:</strong>
+                            <div class="similar-company">${question.similar_to}</div>
+                        </div>
+                    </div>
+                    <div class="question-text">
+                        Is "${question.company_name}" the same company as "${question.similar_to}"?
+                    </div>
+                    <div class="answer-buttons">
+                        <button class="answer-btn yes" data-answer="yes">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                            Yes
+                        </button>
+                        <button class="answer-btn no" data-answer="no">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                            No
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Restore previous answer if exists
+            if (answers[question.company_name]) {
+                const selectedBtn = questionContent.querySelector(`[data-answer="${answers[question.company_name]}"]`);
+                if (selectedBtn) {
+                    selectedBtn.classList.add('selected');
+                }
+            }
+            
+            // Add click handlers
+            questionContent.querySelectorAll('.answer-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove previous selection
+                    questionContent.querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
+                    // Add current selection
+                    btn.classList.add('selected');
+                    // Store answer
+                    answers[question.company_name] = btn.dataset.answer;
+                    
+                    // Auto-advance after 500ms
+                    setTimeout(() => {
+                        currentQuestionIndex++;
+                        displayCurrentQuestion();
+                    }, 500);
+                });
+            });
+        }
+        
+        async function submitAllAnswers() {
+            closeModal();
+            
+            await fetch(`${API_BASE}/api/statement-processor/${sessionId}/answers`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ answers })
+            });
+
+            questionsContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+        }
+
+        // Event Listeners
+        modalClose.addEventListener('click', closeModal);
+        questionsModal.addEventListener('click', (e) => {
+            if (e.target === questionsModal) closeModal();
+        });
+        
+        manualReviewBtn.addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            displayCurrentQuestion();
+            openModal();
+        });
+        
+        skipAllBtn.addEventListener('click', async () => {
+            answers = {};
+            await submitAllAnswers();
+        });
+        
+        modalSkipAll.addEventListener('click', async () => {
+            answers = {};
+            await submitAllAnswers();
+        });
 
         processBtn.addEventListener('click', async () => {
+            // Validate that both files are uploaded
+            if (!pdfFileInput.files[0]) {
+                alert('Please upload a PDF file before processing.');
+                return;
+            }
+            
+            if (!excelFileInput.files[0]) {
+                alert('Please upload an Excel file before processing.');
+                return;
+            }
+            
+            // Validate file types
+            const pdfFile = pdfFileInput.files[0];
+            const excelFile = excelFileInput.files[0];
+            
+            if (!pdfFile.type.includes('pdf')) {
+                alert('Please upload a valid PDF file.');
+                return;
+            }
+            
+            if (!excelFile.name.toLowerCase().includes('.xlsx') && !excelFile.name.toLowerCase().includes('.xls')) {
+                alert('Please upload a valid Excel file (.xlsx or .xls).');
+                return;
+            }
+            
             progressContainer.classList.remove('hidden');
             progressText.textContent = 'Creating session...';
             progressFill.style.width = '10%';
@@ -120,13 +431,18 @@
                 const questionsResponse = await fetch(`${API_BASE}/api/statement-processor/${sessionId}/questions`);
                 const questionsData = await questionsResponse.json();
 
-                if (questionsData.questions.length > 0) {
-                    displayQuestions(questionsData.questions);
-                    progressContainer.classList.add('hidden');
+                currentQuestions = questionsData.questions;
+                progressContainer.classList.add('hidden');
+
+                if (currentQuestions.length > 0) {
                     questionsContainer.classList.remove('hidden');
+                    // Auto-open modal for first-time processing
+                    setTimeout(() => {
+                        currentQuestionIndex = 0;
+                        displayCurrentQuestion();
+                        openModal();
+                    }, 500);
                 } else {
-                    progressText.textContent = 'Processing complete!';
-                    progressFill.style.width = '100%';
                     resultsContainer.classList.remove('hidden');
                 }
             } catch (error) {
@@ -135,37 +451,6 @@
             }
         });
 
-        function displayQuestions(questions) {
-            questionsDiv.innerHTML = '';
-            questions.forEach(q => {
-                const questionEl = document.createElement('div');
-                questionEl.innerHTML = `
-                    <p>Is "${q.company_name}" the same as "${q.similar_to}"?</p>
-                    <label><input type="radio" name="${q.id}" value="yes"> Yes</label>
-                    <label><input type="radio" name="${q.id}" value="no"> No</label>
-                    <label><input type="radio" name="${q.id}" value="skip"> Skip</label>
-                `;
-                questionsDiv.appendChild(questionEl);
-            });
-        }
-
-        submitAnswersBtn.addEventListener('click', async () => {
-            const answers = {};
-            const questionElements = questionsDiv.querySelectorAll('input[type="radio"]:checked');
-            questionElements.forEach(input => {
-                const questionId = input.name;
-                answers[questionId] = input.value;
-            });
-
-            await fetch(`${API_BASE}/api/statement-processor/${sessionId}/answers`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ answers })
-            });
-
-            questionsContainer.classList.add('hidden');
-            resultsContainer.classList.remove('hidden');
-        });
 
         downloadResultsBtn.addEventListener('click', async () => {
             const response = await fetch(`${API_BASE}/api/statement-processor/${sessionId}/download`);
@@ -178,6 +463,11 @@
             a.download = filename;
             a.click();
         });
+    </script>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
     </script>
 </body>
 </html>

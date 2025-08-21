@@ -6,8 +6,23 @@
     <title>AlaeAutomates 2.0 - Invoice Processing</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+    <!-- Mobile Block Message -->
+    <div class="mobile-block">
+        <div class="mobile-block-content">
+            <svg class="icon" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h1>Desktop Only</h1>
+            <p>This application is designed for desktop use only. Please access it from a computer with a larger screen for the best experience.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Minimum screen width required: 768px</p>
+        </div>
+    </div>
+
     <!-- Modern Navigation Bar -->
     <nav class="modern-nav">
         <div class="nav-container">
@@ -26,35 +41,93 @@
             <a href="monthly_statements.html" class="secondary-nav-item">Monthly Statements</a>
             <a href="invoices.html" class="secondary-nav-item active">Invoice Processing</a>
             <a href="cc_batch.html" class="secondary-nav-item">CC Batch Processing</a>
+            <a href="excel_macros.html" class="secondary-nav-item">Excel Macros</a>
         </div>
     </div>
 
-    <div class="page-container">
-        <div class="page-content">
-            <div class="page-header">
-                <h1 class="hero-main-title"><span class="title-red">Invoice Processing</span></h1>
-                <p class="hero-description-text">Upload a PDF file containing one or more invoices to automatically split them into separate documents.</p>
-            </div>
+    <div class="feature-page-container">
+        <!-- Background Animation -->
+        <div class="feature-background-animation">
+            <div class="feature-floating-element feature-element-1"></div>
+            <div class="feature-floating-element feature-element-2"></div>
+            <div class="feature-floating-element feature-element-3"></div>
+            <div class="feature-floating-element feature-element-4"></div>
+            
+            <div class="feature-fire-dot feature-fire-dot-1"></div>
+            <div class="feature-fire-dot feature-fire-dot-2"></div>
+            <div class="feature-fire-dot feature-fire-dot-3"></div>
+            <div class="feature-fire-dot feature-fire-dot-4"></div>
+            <div class="feature-fire-dot feature-fire-dot-5"></div>
+            <div class="feature-fire-dot feature-fire-dot-6"></div>
+            
+            <div class="feature-white-dot feature-white-dot-1"></div>
+            <div class="feature-white-dot feature-white-dot-2"></div>
+            <div class="feature-white-dot feature-white-dot-3"></div>
+            <div class="feature-white-dot feature-white-dot-4"></div>
+        </div>
 
-            <div class="page-body">
-                <div class="form-group">
-                    <label for="invoiceFile">Invoice PDF</label>
-                    <input type="file" id="invoiceFile" class="form-control" accept=".pdf">
-                </div>
-
-                <button class="btn btn-primary" id="process-button">Process Invoices</button>
-
-                <div id="progress-container" class="hidden mt-3">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
+        <div class="feature-content">
+            <div class="feature-card">
+                <div class="form-group-enhanced">
+                    <label class="form-label-enhanced" for="invoiceFile">
+                        <svg class="icon" viewBox="0 0 24 24" style="display: inline; margin-right: 8px;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <line x1="16" y1="15" x2="8" y2="15"></line>
+                        </svg>
+                        Invoice PDF Document
+                    </label>
+                    <div class="file-upload-area" id="invoiceUploadArea">
+                        <div class="file-upload-icon">
+                            <svg class="icon icon-large" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="15" x2="8" y2="15"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </div>
+                        <div class="file-upload-text">Drop invoice PDF here or click to browse</div>
+                        <div class="file-upload-hint">Supports multi-page PDF files up to 100MB</div>
+                        <input type="file" id="invoiceFile" accept=".pdf" style="display: none;">
                     </div>
-                    <p id="progress-text" class="text-center"></p>
                 </div>
 
-                <div id="results-container" class="hidden mt-3">
-                    <h3 class="tool-title">Results</h3>
-                    <p id="result-message"></p>
-                    <a href="#" class="btn btn-primary" id="download-zip-button" target="_blank">Download ZIP</a>
+                <button class="btn-enhanced btn-primary-enhanced" id="process-button">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                        <path d="M8 12l2 2 4-4"></path>
+                        <path d="M16 8l-8 8"></path>
+                        <path d="M8 8l8 8"></path>
+                    </svg>
+                    Process & Split Invoices
+                </button>
+
+                <div id="progress-container" class="progress-container-enhanced hidden">
+                    <div class="progress-bar-enhanced">
+                        <div class="progress-fill-enhanced" id="progress-fill"></div>
+                    </div>
+                    <p id="progress-text" class="progress-text-enhanced"></p>
+                </div>
+
+                <div id="results-container" class="results-container-enhanced hidden">
+                    <h3 style="color: #22c55e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                        Invoices Split Successfully
+                    </h3>
+                    <p id="result-message" style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.8);"></p>
+                    <a href="#" class="btn-enhanced btn-primary-enhanced" id="download-zip-button" target="_blank">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7,10 12,15 17,10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Split Invoices
+                    </a>
                 </div>
             </div>
         </div>
@@ -64,6 +137,7 @@
     <script>
         const processBtn = document.getElementById('process-button');
         const invoiceFileInput = document.getElementById('invoiceFile');
+        const invoiceUploadArea = document.getElementById('invoiceUploadArea');
         const progressContainer = document.getElementById('progress-container');
         const progressFill = document.getElementById('progress-fill');
         const progressText = document.getElementById('progress-text');
@@ -73,7 +147,59 @@
 
         const API_BASE = 'https://alaeautomatesapi.up.railway.app';
 
+        // Drag and Drop Setup
+        function setupDragDrop(uploadArea, fileInput) {
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    updateUploadAreaState(uploadArea, files[0].name);
+                }
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    updateUploadAreaState(uploadArea, e.target.files[0].name);
+                }
+            });
+        }
+        
+        function updateUploadAreaState(uploadArea, fileName) {
+            uploadArea.classList.add('file-selected');
+            const textElement = uploadArea.querySelector('.file-upload-text');
+            textElement.textContent = `Selected: ${fileName}`;
+        }
+        
+        setupDragDrop(invoiceUploadArea, invoiceFileInput);
+
         processBtn.addEventListener('click', async () => {
+            // Validate that file is uploaded
+            if (!invoiceFileInput.files[0]) {
+                alert('Please upload a PDF file before processing.');
+                return;
+            }
+            
+            // Validate file type
+            const file = invoiceFileInput.files[0];
+            if (!file.type.includes('pdf')) {
+                alert('Please upload a valid PDF file.');
+                return;
+            }
+            
             progressContainer.classList.remove('hidden');
             progressText.textContent = 'Uploading and processing...';
             progressFill.style.width = '50%';
@@ -103,6 +229,11 @@
                 progressText.textContent = 'An error occurred.';
             }
         });
+    </script>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
     </script>
 </body>
 </html>

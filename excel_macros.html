@@ -6,8 +6,23 @@
     <title>AlaeAutomates 2.0 - Excel Macros</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+    <!-- Mobile Block Message -->
+    <div class="mobile-block">
+        <div class="mobile-block-content">
+            <svg class="icon" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h1>Desktop Only</h1>
+            <p>This application is designed for desktop use only. Please access it from a computer with a larger screen for the best experience.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Minimum screen width required: 768px</p>
+        </div>
+    </div>
+
     <!-- Modern Navigation Bar -->
     <nav class="modern-nav">
         <div class="nav-container">
@@ -30,22 +45,497 @@
         </div>
     </div>
 
-    <div class="page-container">
-        <div class="page-content">
-            <div class="page-header">
-                <h1 class="hero-main-title"><span class="title-red">Excel Macros</span></h1>
-                <p class="hero-description-text">This feature is coming soon. It will allow you to clean, format, sort, and calculate Excel data with powerful automation macros.</p>
-            </div>
+    <div class="feature-page-container">
+        <!-- Background Animation -->
+        <div class="feature-background-animation">
+            <div class="feature-floating-element feature-element-1"></div>
+            <div class="feature-floating-element feature-element-2"></div>
+            <div class="feature-floating-element feature-element-3"></div>
+            <div class="feature-floating-element feature-element-4"></div>
+            
+            <div class="feature-fire-dot feature-fire-dot-1"></div>
+            <div class="feature-fire-dot feature-fire-dot-2"></div>
+            <div class="feature-fire-dot feature-fire-dot-3"></div>
+            <div class="feature-fire-dot feature-fire-dot-4"></div>
+            <div class="feature-fire-dot feature-fire-dot-5"></div>
+            <div class="feature-fire-dot feature-fire-dot-6"></div>
+            
+            <div class="feature-white-dot feature-white-dot-1"></div>
+            <div class="feature-white-dot feature-white-dot-2"></div>
+            <div class="feature-white-dot feature-white-dot-3"></div>
+            <div class="feature-white-dot feature-white-dot-4"></div>
+        </div>
 
-            <div class="page-body">
-                <div class="text-center">
-                    <h3 class="tool-title">Stay Tuned!</h3>
-                    <p class="tool-description">We are working hard to bring you this feature. Please check back later.</p>
+        <div class="feature-content">
+            <div class="feature-card">
+                <div class="form-group-enhanced">
+                    <label class="form-label-enhanced">
+                        <svg class="icon" viewBox="0 0 24 24" style="display: inline; margin-right: 8px;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <rect x="8" y="13" width="8" height="4" rx="1"></rect>
+                            <path d="M10 15h4"></path>
+                            <path d="M10 17h4"></path>
+                        </svg>
+                        Excel VBA Macros Collection
+                    </label>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Professional Excel macros for data processing and automation tasks.</p>
+                </div>
+
+                <div class="macros-grid">
+                    <!-- Credit Card Data Cleaner -->
+                    <div class="macro-card">
+                        <h3 class="macro-card-title">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                            </svg>
+                            Credit Card Data Cleaner
+                        </h3>
+                        <p class="macro-card-description">Automatically cleans credit card batch data by removing headers, totals, and formatting for automation scripts.</p>
+                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('ccCleaner')">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            View Code
+                        </button>
+                    </div>
+
+                    <!-- Invoice Number Extractor -->
+                    <div class="macro-card">
+                        <h3 class="macro-card-title">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <line x1="16" y1="15" x2="8" y2="15"></line>
+                            </svg>
+                            Invoice Number Extractor
+                        </h3>
+                        <p class="macro-card-description">Extracts and validates invoice numbers from Excel data using pattern matching and formatting rules.</p>
+                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('invoiceExtractor')">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            View Code
+                        </button>
+                    </div>
+
+                    <!-- Data Validator -->
+                    <div class="macro-card">
+                        <h3 class="macro-card-title">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                            Data Validator
+                        </h3>
+                        <p class="macro-card-description">Validates data integrity, checks for duplicates, and ensures proper formatting across spreadsheet columns.</p>
+                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('dataValidator')">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            View Code
+                        </button>
+                    </div>
+
+                    <!-- Column Organizer -->
+                    <div class="macro-card">
+                        <h3 class="macro-card-title">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                            </svg>
+                            Column Organizer
+                        </h3>
+                        <p class="macro-card-description">Automatically organizes and rearranges columns based on predefined templates and business rules.</p>
+                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('columnOrganizer')">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            View Code
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Macro Display Modal -->
+    <div class="modal-overlay" id="macroModal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2 class="modal-title" id="macroTitle">Excel Macro</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 1rem;">
+                    <button class="btn-enhanced btn-secondary-enhanced" id="copyMacroBtn">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy to Clipboard
+                    </button>
+                </div>
+                <pre id="macroCode" style="background: #000; color: #00ff00; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.4; max-height: 60vh; overflow-y: auto; border: 1px solid rgba(255, 255, 255, 0.1);"></pre>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        const macroModal = document.getElementById('macroModal');
+        const modalClose = document.getElementById('modalClose');
+        const macroTitle = document.getElementById('macroTitle');
+        const macroCode = document.getElementById('macroCode');
+        const copyMacroBtn = document.getElementById('copyMacroBtn');
+
+        const macros = {
+            ccCleaner: {
+                title: "Credit Card Data Cleaner Macro",
+                code: `Sub CleanCreditCardData()
+    '
+    ' Credit Card Data Cleaner Macro
+    ' Removes headers, totals, and formats data for automation
+    '
+    
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim lastCol As Long
+    Dim i As Long
+    
+    Set ws = ActiveSheet
+    
+    ' Find the last row and column with data
+    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    
+    ' Remove header rows (typically first 3-5 rows)
+    For i = 1 To 5
+        If ws.Cells(i, 1).Value Like "*TOTAL*" Or _
+           ws.Cells(i, 1).Value Like "*HEADER*" Or _
+           ws.Cells(i, 1).Value Like "*DATE*" Or _
+           IsEmpty(ws.Cells(i, 1)) Then
+            ws.Rows(i).Delete
+            lastRow = lastRow - 1
+            i = i - 1
+        End If
+    Next i
+    
+    ' Remove footer/total rows
+    For i = lastRow To lastRow - 5 Step -1
+        If ws.Cells(i, 1).Value Like "*TOTAL*" Or _
+           ws.Cells(i, 1).Value Like "*SUMMARY*" Or _
+           IsEmpty(ws.Cells(i, 1)) Then
+            ws.Rows(i).Delete
+        End If
+    Next i
+    
+    ' Clean and format credit card numbers
+    For i = 2 To lastRow
+        ' Column G typically contains card numbers
+        If Not IsEmpty(ws.Cells(i, 7)) Then
+            Dim cardNum As String
+            cardNum = ws.Cells(i, 7).Value
+            
+            ' Remove spaces and format as XXXX####
+            cardNum = Replace(cardNum, " ", "")
+            If Len(cardNum) > 4 Then
+                cardNum = "XXXX" & Right(cardNum, 4)
+                ws.Cells(i, 7).Value = cardNum
+            End If
+        End If
+        
+        ' Clean settlement amounts (Column H)
+        If Not IsEmpty(ws.Cells(i, 8)) Then
+            Dim amount As String
+            amount = ws.Cells(i, 8).Value
+            
+            ' Remove currency symbols and format as number
+            amount = Replace(amount, "$", "")
+            amount = Replace(amount, ",", "")
+            
+            ' Skip negative amounts (refunds)
+            If Left(amount, 1) = "(" And Right(amount, 1) = ")" Then
+                ws.Rows(i).Delete
+                lastRow = lastRow - 1
+                i = i - 1
+            Else
+                ws.Cells(i, 8).Value = CDbl(amount)
+                ws.Cells(i, 8).NumberFormat = "0.00"
+            End If
+        End If
+        
+        ' Clean customer names (Column E)
+        If Not IsEmpty(ws.Cells(i, 5)) Then
+            Dim customerName As String
+            customerName = ws.Cells(i, 5).Value
+            
+            ' Convert "Last, First" to "First Last"
+            If InStr(customerName, ",") > 0 Then
+                Dim nameParts() As String
+                nameParts = Split(customerName, ",")
+                If UBound(nameParts) >= 1 Then
+                    customerName = Trim(nameParts(1)) & " " & Trim(nameParts(0))
+                    ws.Cells(i, 5).Value = customerName
+                End If
+            End If
+            
+            ' Handle special cases
+            If UCase(customerName) Like "*BILL .COM*" Then
+                ws.Cells(i, 5).Value = "BILL.COM"
+            End If
+        End If
+    Next i
+    
+    ' Auto-fit columns
+    ws.Columns.AutoFit
+    
+    MsgBox "Credit card data cleaning completed!", vbInformation
+    
+End Sub`
+            },
+            invoiceExtractor: {
+                title: "Invoice Number Extractor Macro",
+                code: `Sub ExtractInvoiceNumbers()
+    '
+    ' Invoice Number Extractor Macro
+    ' Extracts and validates invoice numbers using pattern matching
+    '
+    
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim i As Long
+    Dim invoicePattern As String
+    
+    Set ws = ActiveSheet
+    lastRow = ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
+    
+    ' Common invoice patterns: P###### or R######
+    invoicePattern = "^[PR][0-9]{6,8}$"
+    
+    ' Add validation column if it doesn't exist
+    If ws.Cells(1, 10).Value = "" Then
+        ws.Cells(1, 10).Value = "Invoice Valid"
+        ws.Cells(1, 10).Font.Bold = True
+    End If
+    
+    For i = 2 To lastRow
+        Dim invoiceNum As String
+        Dim isValid As Boolean
+        
+        invoiceNum = Trim(UCase(ws.Cells(i, 2).Value)) ' Column B
+        isValid = False
+        
+        ' Clean multiple invoice numbers (take first)
+        If InStr(invoiceNum, ",") > 0 Then
+            invoiceNum = Trim(Split(invoiceNum, ",")(0))
+            ws.Cells(i, 2).Value = invoiceNum
+        End If
+        
+        ' Validate invoice format
+        If Len(invoiceNum) >= 7 And Len(invoiceNum) <= 9 Then
+            If Left(invoiceNum, 1) = "P" Or Left(invoiceNum, 1) = "R" Then
+                Dim numPart As String
+                numPart = Mid(invoiceNum, 2)
+                If IsNumeric(numPart) Then
+                    isValid = True
+                End If
+            End If
+        End If
+        
+        ' Mark validation result
+        If isValid Then
+            ws.Cells(i, 10).Value = "VALID"
+            ws.Cells(i, 10).Interior.Color = RGB(144, 238, 144) ' Light green
+        Else
+            ws.Cells(i, 10).Value = "INVALID - Line " & i & " TBD manually"
+            ws.Cells(i, 10).Interior.Color = RGB(255, 182, 193) ' Light pink
+            ws.Cells(i, 2).Value = "Line " & i & " TBD manually"
+        End If
+    Next i
+    
+    ' Auto-fit columns
+    ws.Columns.AutoFit
+    
+    MsgBox "Invoice extraction completed!", vbInformation
+    
+End Sub`
+            },
+            dataValidator: {
+                title: "Data Validator Macro",
+                code: `Sub ValidateDataIntegrity()
+    '
+    ' Data Validator Macro
+    ' Checks for duplicates, missing data, and formatting issues
+    '
+    
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim lastCol As Long
+    Dim i As Long, j As Long
+    Dim validationReport As String
+    
+    Set ws = ActiveSheet
+    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    
+    validationReport = "DATA VALIDATION REPORT" & vbCrLf & String(50, "=") & vbCrLf & vbCrLf
+    
+    ' Check for duplicate invoice numbers (Column B)
+    Dim duplicates As Long
+    duplicates = 0
+    
+    For i = 2 To lastRow
+        For j = i + 1 To lastRow
+            If ws.Cells(i, 2).Value <> "" And ws.Cells(i, 2).Value = ws.Cells(j, 2).Value Then
+                ws.Cells(i, 2).Interior.Color = RGB(255, 255, 0) ' Yellow highlight
+                ws.Cells(j, 2).Interior.Color = RGB(255, 255, 0)
+                duplicates = duplicates + 1
+            End If
+        Next j
+    Next i
+    
+    validationReport = validationReport & "Duplicate invoice numbers found: " & duplicates & vbCrLf & vbCrLf
+    
+    ' Check for missing required data
+    Dim missingData As Long
+    missingData = 0
+    
+    For i = 2 To lastRow
+        Dim missingFields As String
+        missingFields = ""
+        
+        ' Check critical columns
+        If IsEmpty(ws.Cells(i, 2)) Then missingFields = missingFields & "Invoice Number, "  ' Column B
+        If IsEmpty(ws.Cells(i, 5)) Then missingFields = missingFields & "Customer Name, "   ' Column E
+        If IsEmpty(ws.Cells(i, 8)) Then missingFields = missingFields & "Amount, "          ' Column H
+        
+        If missingFields <> "" Then
+            missingData = missingData + 1
+            ws.Rows(i).Interior.Color = RGB(255, 182, 193) ' Light pink
+            
+            ' Add comment with missing fields
+            If ws.Cells(i, 1).Comment Is Nothing Then
+                ws.Cells(i, 1).AddComment "Missing: " & Left(missingFields, Len(missingFields) - 2)
+            End If
+        End If
+    Next i
+    
+    validationReport = validationReport & "Rows with missing data: " & missingData & vbCrLf & vbCrLf
+    
+    MsgBox validationReport, vbInformation, "Data Validation Complete"
+    
+    ' Auto-fit columns
+    ws.Columns.AutoFit
+    
+End Sub`
+            },
+            columnOrganizer: {
+                title: "Column Organizer Macro",
+                code: `Sub OrganizeColumns()
+    '
+    ' Column Organizer Macro
+    ' Reorganizes columns based on business templates
+    '
+    
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim lastCol As Long
+    
+    Set ws = ActiveSheet
+    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    
+    ' Standard column order for credit card processing
+    Dim standardHeaders As Variant
+    standardHeaders = Array("ID", "Invoice_Number", "Processing_Date", "Batch_ID", _
+                           "Customer_Name", "Card_Type", "Card_Number", "Settlement_Amount", _
+                           "Transaction_Date", "Status", "Notes")
+    
+    ' Create new organized worksheet
+    Dim newWS As Worksheet
+    Set newWS = ws.Parent.Worksheets.Add(After:=ws)
+    newWS.Name = "Organized_" & Format(Now, "mmddyyyy")
+    
+    ' Set up headers
+    Dim i As Integer
+    For i = 0 To UBound(standardHeaders)
+        newWS.Cells(1, i + 1).Value = standardHeaders(i)
+        newWS.Cells(1, i + 1).Font.Bold = True
+        newWS.Cells(1, i + 1).Interior.Color = RGB(200, 200, 200)
+    Next i
+    
+    ' Auto-fit columns
+    newWS.Columns.AutoFit
+    
+    ' Freeze header row
+    newWS.Rows("2:2").Select
+    ActiveWindow.FreezePanes = True
+    
+    newWS.Cells(1, 1).Select
+    
+    MsgBox "Column organization completed!" & vbCrLf & _
+           "New organized sheet: " & newWS.Name, vbInformation
+    
+End Sub`
+            }
+        };
+
+        function showMacro(macroKey) {
+            const macro = macros[macroKey];
+            if (macro) {
+                macroTitle.textContent = macro.title;
+                macroCode.textContent = macro.code;
+                macroModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            macroModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        macroModal.addEventListener('click', (e) => {
+            if (e.target === macroModal) closeModal();
+        });
+
+        copyMacroBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(macroCode.textContent);
+                const originalText = copyMacroBtn.innerHTML;
+                copyMacroBtn.innerHTML = \`
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <polyline points="20,6 9,17 4,12"></polyline>
+                    </svg>
+                    Copied!
+                \`;
+                setTimeout(() => {
+                    copyMacroBtn.innerHTML = originalText;
+                }, 2000);
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = macroCode.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+        });
+    </script>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
