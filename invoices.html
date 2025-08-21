@@ -53,41 +53,26 @@
             <div class="feature-floating-element feature-element-3"></div>
             <div class="feature-floating-element feature-element-4"></div>
             
+            <!-- Optimized feature fire dots -->
             <div class="feature-fire-dot feature-fire-dot-1"></div>
-            <div class="feature-fire-dot feature-fire-dot-2"></div>
             <div class="feature-fire-dot feature-fire-dot-3"></div>
-            <div class="feature-fire-dot feature-fire-dot-4"></div>
             <div class="feature-fire-dot feature-fire-dot-5"></div>
-            <div class="feature-fire-dot feature-fire-dot-6"></div>
             
+            <!-- Optimized feature white dots -->
             <div class="feature-white-dot feature-white-dot-1"></div>
-            <div class="feature-white-dot feature-white-dot-2"></div>
             <div class="feature-white-dot feature-white-dot-3"></div>
-            <div class="feature-white-dot feature-white-dot-4"></div>
         </div>
 
         <div class="feature-content">
             <div class="feature-card">
                 <div class="form-group-enhanced">
                     <label class="form-label-enhanced" for="invoiceFile">
-                        <svg class="icon" viewBox="0 0 24 24" style="display: inline; margin-right: 8px;">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14,2 14,8 20,8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <line x1="16" y1="15" x2="8" y2="15"></line>
-                        </svg>
+                        <i data-lucide="file-text" class="icon" style="margin-right: 8px;"></i>
                         Invoice PDF Document
                     </label>
                     <div class="file-upload-area" id="invoiceUploadArea">
                         <div class="file-upload-icon">
-                            <svg class="icon icon-large" viewBox="0 0 24 24">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="15" x2="8" y2="15"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                            </svg>
+                            <i data-lucide="file-plus" class="icon icon-large"></i>
                         </div>
                         <div class="file-upload-text">Drop invoice PDF here or click to browse</div>
                         <div class="file-upload-hint">Supports multi-page PDF files up to 100MB</div>
@@ -96,12 +81,7 @@
                 </div>
 
                 <button class="btn-enhanced btn-primary-enhanced" id="process-button">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
-                        <path d="M8 12l2 2 4-4"></path>
-                        <path d="M16 8l-8 8"></path>
-                        <path d="M8 8l8 8"></path>
-                    </svg>
+                    <i data-lucide="zap" class="icon"></i>
                     Process & Split Invoices
                 </button>
 
@@ -114,18 +94,12 @@
 
                 <div id="results-container" class="results-container-enhanced hidden">
                     <h3 style="color: #22c55e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <polyline points="20,6 9,17 4,12"></polyline>
-                        </svg>
+                        <i data-lucide="check-circle" class="icon"></i>
                         Invoices Split Successfully
                     </h3>
                     <p id="result-message" style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.8);"></p>
                     <a href="#" class="btn-enhanced btn-primary-enhanced" id="download-zip-button" target="_blank">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7,10 12,15 17,10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
+                        <i data-lucide="download" class="icon"></i>
                         Download Split Invoices
                     </a>
                 </div>
@@ -134,6 +108,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="professional-modal.js"></script>
     <script>
         const processBtn = document.getElementById('process-button');
         const invoiceFileInput = document.getElementById('invoiceFile');
@@ -189,14 +164,22 @@
         processBtn.addEventListener('click', async () => {
             // Validate that file is uploaded
             if (!invoiceFileInput.files[0]) {
-                alert('Please upload a PDF file before processing.');
+                if (window.ProfessionalUI) {
+                    window.ProfessionalUI.showAlert('warning', 'File Required', 'Please upload a PDF file before processing.');
+                } else {
+                    alert('Please upload a PDF file before processing.');
+                }
                 return;
             }
             
             // Validate file type
             const file = invoiceFileInput.files[0];
             if (!file.type.includes('pdf')) {
-                alert('Please upload a valid PDF file.');
+                if (window.ProfessionalUI) {
+                    window.ProfessionalUI.showAlert('error', 'Invalid File Type', 'Please upload a valid PDF file.');
+                } else {
+                    alert('Please upload a valid PDF file.');
+                }
                 return;
             }
             

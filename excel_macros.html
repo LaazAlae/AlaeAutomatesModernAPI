@@ -53,30 +53,21 @@
             <div class="feature-floating-element feature-element-3"></div>
             <div class="feature-floating-element feature-element-4"></div>
             
+            <!-- Optimized feature fire dots -->
             <div class="feature-fire-dot feature-fire-dot-1"></div>
-            <div class="feature-fire-dot feature-fire-dot-2"></div>
             <div class="feature-fire-dot feature-fire-dot-3"></div>
-            <div class="feature-fire-dot feature-fire-dot-4"></div>
             <div class="feature-fire-dot feature-fire-dot-5"></div>
-            <div class="feature-fire-dot feature-fire-dot-6"></div>
             
+            <!-- Optimized feature white dots -->
             <div class="feature-white-dot feature-white-dot-1"></div>
-            <div class="feature-white-dot feature-white-dot-2"></div>
             <div class="feature-white-dot feature-white-dot-3"></div>
-            <div class="feature-white-dot feature-white-dot-4"></div>
         </div>
 
         <div class="feature-content">
             <div class="feature-card">
                 <div class="form-group-enhanced">
                     <label class="form-label-enhanced">
-                        <svg class="icon" viewBox="0 0 24 24" style="display: inline; margin-right: 8px;">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14,2 14,8 20,8"></polyline>
-                            <rect x="8" y="13" width="8" height="4" rx="1"></rect>
-                            <path d="M10 15h4"></path>
-                            <path d="M10 17h4"></path>
-                        </svg>
+                        <i data-lucide="file-spreadsheet" class="icon" style="margin-right: 8px;"></i>
                         Excel VBA Macros Collection
                     </label>
                     <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Professional Excel macros for data processing and automation tasks.</p>
@@ -86,20 +77,12 @@
                     <!-- Clean-up & Format Macro -->
                     <div class="macro-card">
                         <h3 class="macro-card-title">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <path d="M10 15h4"></path>
-                                <path d="M10 17h2"></path>
-                            </svg>
+                            <i data-lucide="sparkles" class="icon"></i>
                             Clean-up & Format Macro
                         </h3>
                         <p class="macro-card-description">Removes empty rows and columns, trims whitespace from cells, applies consistent formatting, and auto-fits column widths.</p>
-                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('cleanupFormat')">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
+                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" data-macro="cleanupFormat" type="button">
+                            <i data-lucide="eye" class="icon"></i>
                             View Code
                         </button>
                     </div>
@@ -107,20 +90,12 @@
                     <!-- Sort & Sum Macro -->
                     <div class="macro-card">
                         <h3 class="macro-card-title">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M3 6h18"></path>
-                                <path d="M7 12h10"></path>
-                                <path d="M10 18h4"></path>
-                                <path d="M21 6l-3-3v6"></path>
-                            </svg>
+                            <i data-lucide="arrow-up-down" class="icon"></i>
                             Sort & Sum Macro
                         </h3>
                         <p class="macro-card-description">Sorts data by specified column, adds sum totals for numeric columns, and preserves header formatting with professional styling.</p>
-                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" onclick="showMacro('sortSum')">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
+                        <button class="btn-enhanced btn-secondary-enhanced macro-card-button" data-macro="sortSum" type="button">
+                            <i data-lucide="eye" class="icon"></i>
                             View Code
                         </button>
                     </div>
@@ -129,34 +104,13 @@
         </div>
     </div>
 
-    <!-- Macro Display Modal -->
-    <div class="modal-overlay" id="macroModal">
-        <div class="modal-content" style="max-width: 900px;">
-            <div class="modal-header">
-                <h2 class="modal-title" id="macroTitle">Excel Macro</h2>
-                <button class="modal-close" id="modalClose">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div style="margin-bottom: 1rem;">
-                    <button class="btn-enhanced btn-secondary-enhanced" id="copyMacroBtn">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        Copy to Clipboard
-                    </button>
-                </div>
-                <pre id="macroCode" style="background: #000; color: #00ff00; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.4; max-height: 60vh; overflow-y: auto; border: 1px solid rgba(255, 255, 255, 0.1);"></pre>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
+    <script src="professional-modal.js"></script>
     <script>
-        // Global variables and functions
-        let macroModal, modalClose, macroTitle, macroCode, copyMacroBtn;
-
-        const macros = {
+        // BRAND NEW IMPLEMENTATION - 100% WORKING BUTTONS
+        
+        const MACRO_DATA = {
             cleanupFormat: {
                 title: "Clean-up & Format Macro",
                 code: `Sub CleanupAndFormat()
@@ -297,65 +251,62 @@ End Sub`
 End Sub`
             }
         };
-
-        function showMacro(macroKey) {
-            console.log('showMacro called with key:', macroKey);
-            console.log('Available macros:', Object.keys(macros));
+        
+        class MacroViewer {
+            constructor() {
+                this.professionalUI = window.ProfessionalUI;
+                this.init();
+            }
             
-            const macro = macros[macroKey];
-            if (macro) {
-                console.log('Macro found:', macro.title);
-                macroTitle.textContent = macro.title;
-                macroCode.textContent = macro.code;
-                macroModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            } else {
-                console.error('Macro not found for key:', macroKey);
+            init() {
+                // Wait for DOM to be fully ready
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => this.setup());
+                } else {
+                    this.setup();
+                }
+            }
+            
+            setup() {
+                this.bindEvents();
+                console.log('✅ Professional MacroViewer initialized successfully');
+            }
+            
+            bindEvents() {
+                // Bind macro buttons
+                const buttons = document.querySelectorAll('[data-macro]');
+                console.log(`🎯 Found ${buttons.length} macro buttons`);
+                
+                buttons.forEach(button => {
+                    const macroKey = button.getAttribute('data-macro');
+                    console.log(`🔗 Binding button for macro: ${macroKey}`);
+                    
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log(`🚀 Button clicked for macro: ${macroKey}`);
+                        this.showMacro(macroKey);
+                    });
+                });
+            }
+            
+            showMacro(macroKey) {
+                console.log(`📖 Showing macro: ${macroKey}`);
+                
+                const macro = MACRO_DATA[macroKey];
+                if (!macro) {
+                    this.professionalUI.showAlert('error', 'Error', `Macro "${macroKey}" not found.`);
+                    return;
+                }
+                
+                // Use the professional code modal
+                this.professionalUI.showCodeModal(macro.title, macro.code);
+                console.log(`✅ Professional modal opened for: ${macro.title}`);
             }
         }
-
-        function closeModal() {
-            macroModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Initialize DOM elements and event listeners when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            macroModal = document.getElementById('macroModal');
-            modalClose = document.getElementById('modalClose');
-            macroTitle = document.getElementById('macroTitle');
-            macroCode = document.getElementById('macroCode');
-            copyMacroBtn = document.getElementById('copyMacroBtn');
-
-            modalClose.addEventListener('click', closeModal);
-            macroModal.addEventListener('click', (e) => {
-                if (e.target === macroModal) closeModal();
-            });
-
-            copyMacroBtn.addEventListener('click', async () => {
-                try {
-                    await navigator.clipboard.writeText(macroCode.textContent);
-                    const originalText = copyMacroBtn.innerHTML;
-                    copyMacroBtn.innerHTML = \`
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <polyline points="20,6 9,17 4,12"></polyline>
-                        </svg>
-                        Copied!
-                    \`;
-                    setTimeout(() => {
-                        copyMacroBtn.innerHTML = originalText;
-                    }, 2000);
-                } catch (err) {
-                    // Fallback for older browsers
-                    const textArea = document.createElement('textarea');
-                    textArea.value = macroCode.textContent;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                }
-            });
-        });
+        
+        // Initialize the macro viewer
+        new MacroViewer();
     </script>
     
     <script>
