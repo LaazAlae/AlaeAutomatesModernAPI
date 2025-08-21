@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlaeAutomates 2.0 - CC Batch Processing</title>
+    <title>AlaeAutomates 2.0 - Invoice Processing</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
@@ -39,8 +39,8 @@
     <div class="secondary-nav">
         <div class="secondary-nav-container">
             <a href="monthly_statements.html" class="secondary-nav-item">Monthly Statements</a>
-            <a href="invoices.html" class="secondary-nav-item">Invoice Processing</a>
-            <a href="cc_batch.html" class="secondary-nav-item active">CC Batch Processing</a>
+            <a href="invoices.html" class="secondary-nav-item active">Invoice Processing</a>
+            <a href="cc_batch.html" class="secondary-nav-item">CC Batch Processing</a>
             <a href="excel_macros.html" class="secondary-nav-item">Excel Macros</a>
         </div>
     </div>
@@ -66,23 +66,23 @@
         <div class="feature-content">
             <div class="feature-card">
                 <div class="form-group-enhanced">
-                    <label class="form-label-enhanced" for="ccFile">
-                        <i data-lucide="file-spreadsheet" class="icon" style="margin-right: 8px;"></i>
-                        Credit Card Excel File
+                    <label class="form-label-enhanced" for="invoiceFile">
+                        <i data-lucide="file-text" class="icon" style="margin-right: 8px;"></i>
+                        Invoice PDF Document
                     </label>
-                    <div class="file-upload-area" id="ccUploadArea">
+                    <div class="file-upload-area" id="invoiceUploadArea">
                         <div class="file-upload-icon">
-                            <i data-lucide="table" class="icon icon-large"></i>
+                            <i data-lucide="file-plus" class="icon icon-large"></i>
                         </div>
-                        <div class="file-upload-text">Drop Excel file here or click to browse</div>
-                        <div class="file-upload-hint">Supports .xlsx files with credit card batch data</div>
-                        <input type="file" id="ccFile" accept=".xlsx" style="display: none;">
+                        <div class="file-upload-text">Drop invoice PDF here or click to browse</div>
+                        <div class="file-upload-hint">Supports multi-page PDF files up to 100MB</div>
+                        <input type="file" id="invoiceFile" accept=".pdf" style="display: none;">
                     </div>
                 </div>
 
                 <button class="btn-enhanced btn-primary-enhanced" id="process-button">
-                    <i data-lucide="cpu" class="icon"></i>
-                    Generate Automation Script
+                    <i data-lucide="zap" class="icon"></i>
+                    Process & Split Invoices
                 </button>
 
                 <div id="progress-container" class="progress-container-enhanced hidden">
@@ -95,31 +95,30 @@
                 <div id="results-container" class="results-container-enhanced hidden">
                     <h3 style="color: #22c55e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                         <i data-lucide="check-circle" class="icon"></i>
-                        Automation Script Generated
+                        Invoices Split Successfully
                     </h3>
-                    <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.8);">Your JavaScript automation script is ready for Legacy Edge browsers.</p>
-                    <textarea id="script-output" class="form-control-enhanced" rows="15" readonly style="font-family: monospace; font-size: 0.9rem; margin-bottom: 1rem;"></textarea>
-                    <button class="btn-enhanced btn-secondary-enhanced" id="copy-script-button">
-                        <i data-lucide="copy" class="icon"></i>
-                        Copy to Clipboard
-                    </button>
+                    <p id="result-message" style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.8);"></p>
+                    <a href="#" class="btn-enhanced btn-primary-enhanced" id="download-zip-button" target="_blank">
+                        <i data-lucide="download" class="icon"></i>
+                        Download Split Invoices
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
-    <script src="professional-modal.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/professional-modal.js"></script>
     <script>
         const processBtn = document.getElementById('process-button');
-        const ccFileInput = document.getElementById('ccFile');
-        const ccUploadArea = document.getElementById('ccUploadArea');
+        const invoiceFileInput = document.getElementById('invoiceFile');
+        const invoiceUploadArea = document.getElementById('invoiceUploadArea');
         const progressContainer = document.getElementById('progress-container');
         const progressFill = document.getElementById('progress-fill');
         const progressText = document.getElementById('progress-text');
         const resultsContainer = document.getElementById('results-container');
-        const scriptOutput = document.getElementById('script-output');
-        const copyScriptBtn = document.getElementById('copy-script-button');
+        const resultMessage = document.getElementById('result-message');
+        const downloadZipBtn = document.getElementById('download-zip-button');
 
         const API_BASE = 'https://alaeautomatesapi.up.railway.app';
 
@@ -160,26 +159,26 @@
             textElement.textContent = `Selected: ${fileName}`;
         }
         
-        setupDragDrop(ccUploadArea, ccFileInput);
+        setupDragDrop(invoiceUploadArea, invoiceFileInput);
 
         processBtn.addEventListener('click', async () => {
             // Validate that file is uploaded
-            if (!ccFileInput.files[0]) {
+            if (!invoiceFileInput.files[0]) {
                 if (window.ProfessionalUI) {
-                    window.ProfessionalUI.showAlert('warning', 'File Required', 'Please upload an Excel file before processing.');
+                    window.ProfessionalUI.showAlert('warning', 'File Required', 'Please upload a PDF file before processing.');
                 } else {
-                    alert('Please upload an Excel file before processing.');
+                    alert('Please upload a PDF file before processing.');
                 }
                 return;
             }
             
             // Validate file type
-            const file = ccFileInput.files[0];
-            if (!file.name.toLowerCase().includes('.xlsx') && !file.name.toLowerCase().includes('.xls')) {
+            const file = invoiceFileInput.files[0];
+            if (!file.type.includes('pdf')) {
                 if (window.ProfessionalUI) {
-                    window.ProfessionalUI.showAlert('error', 'Invalid File Type', 'Please upload a valid Excel file (.xlsx or .xls).');
+                    window.ProfessionalUI.showAlert('error', 'Invalid File Type', 'Please upload a valid PDF file.');
                 } else {
-                    alert('Please upload a valid Excel file (.xlsx or .xls).');
+                    alert('Please upload a valid PDF file.');
                 }
                 return;
             }
@@ -190,16 +189,16 @@
 
             try {
                 const formData = new FormData();
-                formData.append('file', ccFileInput.files[0]);
+                formData.append('file', invoiceFileInput.files[0]);
 
-                const response = await fetch(`${API_BASE}/api/credit-card-batch`, {
+                const response = await fetch(`${API_BASE}/api/invoice-processor`, {
                     method: 'POST',
                     body: formData
                 });
 
                 const data = await response.json();
 
-                if (data.javascript_code) {
+                if (data.success) {
                     progressText.textContent = 'Processing complete!';
                     progressFill.style.width = '100%';
                     
@@ -208,7 +207,8 @@
                         progressContainer.classList.add('hidden');
                     }, 1500);
                     
-                    scriptOutput.value = data.javascript_code;
+                    resultMessage.textContent = data.message;
+                    downloadZipBtn.href = `${API_BASE}${data.download_url}`;
                     resultsContainer.classList.remove('hidden');
                     
                     // Auto-scroll to results
@@ -228,27 +228,6 @@
                 setTimeout(() => {
                     progressContainer.classList.add('hidden');
                 }, 2000);
-            }
-        });
-
-        copyScriptBtn.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(scriptOutput.value);
-                // Provide visual feedback
-                const originalText = copyScriptBtn.innerHTML;
-                copyScriptBtn.innerHTML = `
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                    Copied!
-                `;
-                setTimeout(() => {
-                    copyScriptBtn.innerHTML = originalText;
-                }, 2000);
-            } catch (err) {
-                // Fallback for older browsers
-                scriptOutput.select();
-                document.execCommand('copy');
             }
         });
     </script>
