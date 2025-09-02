@@ -2140,7 +2140,11 @@ body {
     stroke-linecap: round;
 }
 
-/* Modal Close Button - Additional Styles for .modal-close class */
+/* Modal Close Button - Fixed positioning relative to modal-content */
+.modal-content {
+    position: relative;
+}
+
 .modal-close {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
