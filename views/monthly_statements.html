@@ -276,34 +276,73 @@
             const question = currentQuestions[currentQuestionIndex];
             questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
             
+            // Handle both old and new API formats
+            const allMatches = question.all_matches || [{
+                company_name: question.similar_to,
+                percentage: question.percentage
+            }];
+            const bestMatch = allMatches[0];
+            const pageInfo = question.first_page_number ? `page ${question.first_page_number}` : 'document';
+            
             questionContent.innerHTML = `
-                <div class="question-card">
-                    <div class="company-comparison">
-                        <div>
-                            <strong>Statement Company:</strong>
-                            <div class="company-name">${question.company_name}</div>
+                <div class="question-card-enhanced">
+                    <div class="question-header">
+                        <div class="page-info">
+                            <svg class="icon page-icon" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                            Company found on ${pageInfo}
                         </div>
-                        <div>
-                            <strong>Similar to DNM:</strong>
-                            <div class="similar-company">${question.similar_to}</div>
+                        <div class="confidence-badge">
+                            ${bestMatch.percentage || question.percentage} match
                         </div>
                     </div>
-                    <div class="question-text">
-                        Is "${question.company_name}" the same company as "${question.similar_to}"?
+                    
+                    <div class="main-question">
+                        <h4>Company "${question.company_name}" on ${pageInfo} - is this the same as "${bestMatch.company_name || question.similar_to}"?</h4>
                     </div>
-                    <div class="answer-buttons">
-                        <button class="answer-btn yes" data-answer="yes">
+                    
+                    <div class="all-matches-section">
+                        <div class="matches-title">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                            </svg>
+                            All Potential Matches Found:
+                        </div>
+                        <div class="matches-list">
+                            ${allMatches.map((match, index) => `
+                                <div class="match-item ${index === 0 ? 'best-match' : ''}">
+                                    <div class="match-name">${match.company_name}</div>
+                                    <div class="match-percentage">${match.percentage}</div>
+                                    ${index === 0 ? '<div class="best-match-indicator">\u2190 Best Match</div>' : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="answer-buttons-enhanced">
+                        <button class="answer-btn-enhanced yes" data-answer="yes">
                             <svg class="icon" viewBox="0 0 24 24">
                                 <polyline points="20,6 9,17 4,12"></polyline>
                             </svg>
-                            Yes
+                            Yes - Same Company
                         </button>
-                        <button class="answer-btn no" data-answer="no">
+                        <button class="answer-btn-enhanced no" data-answer="no">
                             <svg class="icon" viewBox="0 0 24 24">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
                                 <line x1="6" y1="6" x2="18" y2="18"></line>
                             </svg>
-                            No
+                            No - Different
+                        </button>
+                        <button class="answer-btn-enhanced skip" data-answer="skip">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                            Skip This One
                         </button>
                     </div>
                 </div>
@@ -318,10 +357,10 @@
             }
             
             // Add click handlers
-            questionContent.querySelectorAll('.answer-btn').forEach(btn => {
+            questionContent.querySelectorAll('.answer-btn-enhanced').forEach(btn => {
                 btn.addEventListener('click', () => {
                     // Remove previous selection
-                    questionContent.querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
+                    questionContent.querySelectorAll('.answer-btn-enhanced').forEach(b => b.classList.remove('selected'));
                     // Add current selection
                     btn.classList.add('selected');
                     // Store answer
