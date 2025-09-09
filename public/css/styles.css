@@ -3497,3 +3497,469 @@ body {
         opacity: 0.5;
     }
 }
+
+/* ====================================== 
+   NEW API UPDATE STYLES - Company Management 
+   ====================================== */
+
+/* Company Management Container */
+.company-management-container-enhanced {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+/* Company Management Table */
+.company-management-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.company-management-table th,
+.company-management-table td {
+    padding: 15px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    vertical-align: middle;
+}
+
+.company-management-table th {
+    background: rgba(255, 0, 0, 0.1);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.company-management-table tbody tr {
+    transition: all var(--transition-fast);
+}
+
+.company-management-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(2px);
+}
+
+/* Destination badges */
+.destination {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.destination.dnm {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.destination.foreign {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.destination.natio,
+.destination.natio-single {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Match/Rejection indicators */
+.matches, .rejections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.match {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 2px;
+    display: inline-block;
+}
+
+.match.confirmed {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.match.rejected {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Small button for table actions */
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    min-width: unset;
+}
+
+/* Large Modal for Company Edit */
+.large-modal {
+    max-width: 700px;
+    width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Company Edit Form */
+.company-edit-form {
+    padding: 1rem 0;
+}
+
+.company-edit-form h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.company-edit-form p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.equivalences-list {
+    margin-bottom: 2rem;
+}
+
+.equivalence-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.02);
+    transition: all var(--transition-medium);
+}
+
+.equivalence-item:hover {
+    border-color: rgba(255, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.equivalence-item .question {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.equivalence-item .confidence {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.decision-controls {
+    margin-top: 15px;
+}
+
+.decision-controls label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+    padding: 8px 0;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.decision-controls label:hover {
+    color: var(--text-primary);
+}
+
+.decision-controls input[type="radio"] {
+    margin-right: 10px;
+    accent-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Question Display */
+.all-questions-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.questions-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.question-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-fast);
+}
+
+.question-item.current-question {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+.question-item.answered {
+    background: rgba(34, 197, 94, 0.05);
+    border-color: rgba(34, 197, 94, 0.2);
+}
+
+.question-company {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.question-percentage {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.current-indicator {
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+.answer-indicator {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.answer-indicator.answer-yes {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.answer-indicator.answer-no {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.answer-indicator.answer-skip {
+    background: rgba(156, 163, 175, 0.2);
+    color: #9ca3af;
+}
+
+/* Question subtitle for destination info */
+.question-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.destination-badge {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Modal Navigation */
+.modal-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.nav-btn .icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Secondary button style */
+.btn-secondary-enhanced {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: var(--text-primary) !important;
+}
+
+.btn-secondary-enhanced:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design for Company Management */
+@media (max-width: 1024px) {
+    .company-management-table {
+        font-size: 0.85rem;
+    }
+    
+    .company-management-table th,
+    .company-management-table td {
+        padding: 10px 8px;
+    }
+    
+    .large-modal {
+        width: 95vw;
+        margin: 1rem;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .modal-navigation {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 768px) {
+    .company-management-table,
+    .company-management-table thead,
+    .company-management-table tbody,
+    .company-management-table th,
+    .company-management-table td,
+    .company-management-table tr {
+        display: block;
+    }
+    
+    .company-management-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .company-management-table tr {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        background: rgba(0, 0, 0, 0.4);
+    }
+    
+    .company-management-table td {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        padding: 8px 0;
+    }
+    
+    .company-management-table td:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        color: var(--accent-color);
+        font-weight: 600;
+    }
+    
+    .equivalence-item {
+        padding: 15px;
+    }
+    
+    .decision-controls {
+        margin-top: 10px;
+    }
+}
+
+/* Memory Management Section */
+.memory-management-section {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+/* File upload text truncation */
+.file-upload-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+.file-upload-area.file-selected .file-upload-text {
+    color: var(--accent-color);
+    font-weight: 500;
+}
