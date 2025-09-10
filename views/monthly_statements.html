@@ -985,8 +985,6 @@
         }
 
         async function submitAnswersAndShowResults() {
-            closeModal();
-            
             try {
                 // Submit answers
                 const response = await fetch(`${API_BASE}/api/statement-processor/${sessionId}/answers`, {
@@ -997,11 +995,14 @@
                 
                 if (!response.ok) throw new Error('Answer submission failed');
                 
+                // Close modal AFTER successful submission
+                closeModal();
                 showSection('resultsSection');
                 
             } catch (error) {
                 console.error('Error submitting answers:', error);
                 alert('Error submitting answers. Please try again.');
+                // Don't close modal if there's an error
             }
         }
 
