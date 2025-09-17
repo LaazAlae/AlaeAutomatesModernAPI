@@ -326,19 +326,28 @@
     </style>
 </head>
 <body>
+    <!-- Mobile Block Message -->
+    <div class="mobile-block">
+        <div class="mobile-block-content">
+            <svg class="icon" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h1>Desktop Only</h1>
+            <p>This application is designed for desktop use only. Please access it from a computer with a larger screen for the best experience.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Minimum screen width required: 768px</p>
+        </div>
+    </div>
+
+
     <div class="memory-layout">
         <div class="memory-header">
-            <div class="header-left">
-                <h1>Company Memory</h1>
-                <p>Never ask the same question twice</p>
-            </div>
-            <div class="header-right">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search companies...">
-                <a href="/monthly_statements.html" class="back-btn">
-                    <i data-lucide="arrow-left"></i>
-                    Back
-                </a>
-            </div>
+            <a href="/monthly_statements.html" class="btn-enhanced btn-secondary-enhanced" style="margin: 1rem; display: flex; align-items: center; text-decoration: none;">
+                <i data-lucide="arrow-left" class="icon" style="margin-right: 8px;"></i>
+                Back to Monthly Statements
+            </a>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search companies..." style="margin: 1rem; padding: 0.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; width: 300px;">
         </div>
 
         <div class="companies-container">
@@ -538,5 +547,7 @@
             `;
         }
     </script>
+
+    <script src="/js/script.js"></script>
 </body>
 </html>

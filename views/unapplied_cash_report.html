@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlaeAutomates 2.0 - Get Unapplied Cash Report</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css?v=1.5">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
@@ -26,9 +26,9 @@
     <!-- Modern Navigation Bar -->
     <nav class="modern-nav">
         <div class="nav-container">
-            <div class="nav-brand" onclick="navigateTo('/')">
+            <a href="/" class="nav-brand" style="cursor: pointer; text-decoration: none;">
                 <span class="brand-text">AlaeAutomates</span>
-            </div>
+            </a>
             <div class="nav-right">
                 <a href="https://alaeautomates.up.railway.app/" class="nav-item old-version" target="_blank">Old Version</a>
             </div>
@@ -85,9 +85,8 @@
                                 Month 1 Excel File
                             </label>
                             <div class="file-upload-area compact" id="month1-upload-area">
-                                <i data-lucide="file-plus" class="file-upload-icon"></i>
-                                <span class="file-upload-text">Month 1 Excel</span>
-                                <span class="file-upload-hint">First month</span>
+                                <i data-lucide="file-text" class="file-upload-icon"></i>
+                                <span class="file-upload-text">First Month</span>
                             </div>
                             <input type="file" id="month1-file-input" accept=".xlsx,.xls" style="display: none;">
                         </div>
@@ -99,9 +98,8 @@
                                 Month 2 Excel File
                             </label>
                             <div class="file-upload-area compact" id="month2-upload-area">
-                                <i data-lucide="file-plus" class="file-upload-icon"></i>
-                                <span class="file-upload-text">Month 2 Excel</span>
-                                <span class="file-upload-hint">Second month</span>
+                                <i data-lucide="file-text" class="file-upload-icon"></i>
+                                <span class="file-upload-text">Second Month</span>
                             </div>
                             <input type="file" id="month2-file-input" accept=".xlsx,.xls" style="display: none;">
                         </div>
@@ -367,12 +365,12 @@
                                     <h3>Unapplied Cash Report Generated Successfully!</h3>
                                     <p>The month-to-month comparison has been completed with detailed analysis of differences.</p>
                                     ${result.summary ? `<div class="summary-info">
-                                        <h4>Comparison Summary:</h4>
-                                        <ul style="text-align: left; margin: 1rem 0;">
-                                            <li><strong>Amount Changes:</strong> ${result.summary.amount_changes || 0} records</li>
-                                            <li><strong>Month 1 Only:</strong> ${result.summary.month1_only || 0} records</li>
-                                            <li><strong>Month 2 Only:</strong> ${result.summary.month2_only || 0} records</li>
-                                            <li><strong>Cutoff Applied:</strong> ${cutoffMonth}</li>
+                                        <h4>Comparison Summary</h4>
+                                        <ul>
+                                            <li data-value="${result.summary.amount_changes || 0} records"><strong>Amount Changes</strong></li>
+                                            <li data-value="${result.summary.month1_only || 0} records"><strong>Month 1 Only</strong></li>
+                                            <li data-value="${result.summary.month2_only || 0} records"><strong>Month 2 Only</strong></li>
+                                            <li data-value="${cutoffMonth}"><strong>Cutoff Applied</strong></li>
                                         </ul>
                                     </div>` : ''}
                                 </div>

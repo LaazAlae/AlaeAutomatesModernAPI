@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlaeAutomates 2.0 - Format Unapplied Excel</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css?v=1.2">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
@@ -26,9 +26,9 @@
     <!-- Modern Navigation Bar -->
     <nav class="modern-nav">
         <div class="nav-container">
-            <div class="nav-brand" onclick="navigateTo('/')">
+            <a href="/" class="nav-brand" style="cursor: pointer; text-decoration: none;">
                 <span class="brand-text">AlaeAutomates</span>
-            </div>
+            </a>
             <div class="nav-right">
                 <a href="https://alaeautomates.up.railway.app/" class="nav-item old-version" target="_blank">Old Version</a>
             </div>
@@ -75,7 +75,9 @@
                     <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Automatically format and clean Excel files with professional styling, header detection, and data optimization.</p>
                 </div>
 
-                <form id="excel-formatter-form">
+                <div class="two-column-layout">
+                    <div class="left-column">
+                        <form id="excel-formatter-form">
                     <div class="form-group-enhanced">
                         <label class="form-label-enhanced">
                             <i data-lucide="upload" class="icon" style="margin-right: 8px;"></i>
@@ -111,8 +113,10 @@
                         Download Formatted Excel
                     </button>
                 </div>
+                    </div>
 
-                <!-- Professional Feature Highlights -->
+                    <div class="right-column">
+                        <!-- Professional Feature Highlights -->
                 <div class="feature-highlights" style="margin-top: 3rem;">
                     <h3 class="feature-highlights-title">What This Tool Does</h3>
                     <div class="feature-highlights-grid">
@@ -134,6 +138,8 @@
                             </div>
                             <span>Column optimization & data consistency cleanup</span>
                         </div>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>
@@ -262,7 +268,10 @@
                                 <div>
                                     <h3>Excel File Formatted Successfully!</h3>
                                     <p>Your Excel file has been professionally formatted with optimized styling and data organization.</p>
-                                    ${result.summary ? `<div class="summary-info">${result.summary}</div>` : ''}
+                                    ${result.summary ? `<div class="summary-info">
+                                        <h4>Processing Summary</h4>
+                                        <div style="color: var(--text-secondary); font-size: clamp(14px, 1.2vw, 16px); line-height: 1.5; padding: 1rem; background: rgba(255, 255, 255, 0.02); border-radius: 8px;">${result.summary}</div>
+                                    </div>` : ''}
                                 </div>
                             </div>
                         `;

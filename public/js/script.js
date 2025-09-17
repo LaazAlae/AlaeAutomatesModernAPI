@@ -120,7 +120,7 @@ class NavigationManager {
     
     getCurrentPage() {
         const path = window.location.pathname;
-        if (path.includes('homepage.html') || path === '/') return 'homepage';
+        if (path === '/') return 'homepage';
         if (path.includes('invoices.html')) return 'invoices';
         if (path.includes('monthly_statements.html')) return 'monthly_statements';
         if (path.includes('cc_batch.html')) return 'cc_batch';
@@ -433,7 +433,7 @@ class ScrollManager {
 // Legacy navigation function (for backward compatibility)
 function navigateTo(url) {
     if (url === '/') {
-        window.location.href = '/homepage.html';
+        window.location.href = '/';
     } else if (url.startsWith('/')) {
         // Already absolute path
         window.location.href = url;

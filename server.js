@@ -223,7 +223,7 @@ app.get('/health', strictLimiter, (req, res) => {
 
 // Main route - secure homepage serving
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'homepage.html'), {
+    res.sendFile(path.join(__dirname, 'views', 'index.html'), {
         headers: {
             'Content-Security-Policy': "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://unpkg.com;",
             'X-Content-Type-Options': 'nosniff'
@@ -232,7 +232,7 @@ app.get('/', (req, res) => {
 });
 
 // Secure file serving for specific pages
-const securePages = ['homepage.html', 'monthly_statements.html', 'invoices.html', 'cc_batch.html', 'excel_macros.html', 'excel_formatter.html', 'unapplied_cash_report.html', 'help.html', 'index.html', 'company_memory.html'];
+const securePages = ['monthly_statements.html', 'invoices.html', 'cc_batch.html', 'excel_macros.html', 'excel_formatter.html', 'unapplied_cash_report.html', 'help.html', 'index.html', 'company_memory.html'];
 
 securePages.forEach(page => {
     app.get(`/${page}`, (req, res) => {
@@ -251,7 +251,7 @@ securePages.forEach(page => {
 
 // 404 Handler - Prevents information disclosure
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', 'homepage.html'));
+    res.status(404).sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 // Global error handler - Prevents stack trace leakage
