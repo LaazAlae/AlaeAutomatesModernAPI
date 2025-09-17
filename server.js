@@ -232,7 +232,7 @@ app.get('/', (req, res) => {
 });
 
 // Secure file serving for specific pages
-const securePages = ['homepage.html', 'monthly_statements.html', 'invoices.html', 'cc_batch.html', 'excel_macros.html', 'help.html', 'index.html', 'company_memory.html'];
+const securePages = ['homepage.html', 'monthly_statements.html', 'invoices.html', 'cc_batch.html', 'excel_macros.html', 'excel_formatter.html', 'unapplied_cash_report.html', 'help.html', 'index.html', 'company_memory.html'];
 
 securePages.forEach(page => {
     app.get(`/${page}`, (req, res) => {

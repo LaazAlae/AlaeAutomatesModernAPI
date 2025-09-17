@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlaeAutomates 2.0 - Format Unapplied Excel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Mobile Block Message -->
+    <div class="mobile-block">
+        <div class="mobile-block-content">
+            <svg class="icon" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h1>Desktop Only</h1>
+            <p>This application is designed for desktop use only. Please access it from a computer with a larger screen for the best experience.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Minimum screen width required: 768px</p>
+        </div>
+    </div>
+
+    <!-- Modern Navigation Bar -->
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="navigateTo('/')">
+                <span class="brand-text">AlaeAutomates</span>
+            </div>
+            <div class="nav-right">
+                <a href="https://alaeautomates.up.railway.app/" class="nav-item old-version" target="_blank">Old Version</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Secondary Navigation -->
+    <div class="secondary-nav">
+        <div class="secondary-nav-container">
+            <a href="/monthly_statements.html" class="secondary-nav-item">Monthly Statements</a>
+            <a href="/invoices.html" class="secondary-nav-item">Invoice Processing</a>
+            <a href="/cc_batch.html" class="secondary-nav-item">CC Batch Processing</a>
+            <a href="/excel_macros.html" class="secondary-nav-item">Excel Macros</a>
+            <a href="/excel_formatter.html" class="secondary-nav-item active">Format Unapplied Excel</a>
+            <a href="/unapplied_cash_report.html" class="secondary-nav-item">Get Unapplied Cash Report</a>
+        </div>
+    </div>
+
+    <div class="feature-page-container">
+        <!-- Background Animation -->
+        <div class="feature-background-animation">
+            <div class="feature-floating-element feature-element-1"></div>
+            <div class="feature-floating-element feature-element-2"></div>
+            <div class="feature-floating-element feature-element-3"></div>
+            <div class="feature-floating-element feature-element-4"></div>
+
+            <!-- Optimized feature fire dots -->
+            <div class="feature-fire-dot feature-fire-dot-1"></div>
+            <div class="feature-fire-dot feature-fire-dot-3"></div>
+            <div class="feature-fire-dot feature-fire-dot-5"></div>
+
+            <!-- Optimized feature white dots -->
+            <div class="feature-white-dot feature-white-dot-1"></div>
+            <div class="feature-white-dot feature-white-dot-3"></div>
+        </div>
+
+        <div class="feature-content">
+            <div class="feature-card">
+                <div class="form-group-enhanced">
+                    <label class="form-label-enhanced">
+                        <i data-lucide="file-spreadsheet" class="icon" style="margin-right: 8px;"></i>
+                        Format Unapplied Excel
+                    </label>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">Automatically format and clean Excel files with professional styling, header detection, and data optimization.</p>
+                </div>
+
+                <form id="excel-formatter-form">
+                    <div class="form-group-enhanced">
+                        <label class="form-label-enhanced">
+                            <i data-lucide="upload" class="icon" style="margin-right: 8px;"></i>
+                            Upload Excel File
+                        </label>
+                        <div class="file-upload-area" id="excel-upload-area">
+                            <i data-lucide="file-plus" class="file-upload-icon"></i>
+                            <span class="file-upload-text">Drop Excel file here or click to browse</span>
+                            <span class="file-upload-hint">Supports .xlsx and .xls files</span>
+                        </div>
+                        <input type="file" id="excel-file-input" accept=".xlsx,.xls" style="display: none;">
+                    </div>
+
+                    <button type="button" class="btn-enhanced btn-primary-enhanced" id="format-excel-btn">
+                        <i data-lucide="wand-2" class="icon" style="margin-right: 8px;"></i>
+                        Format Excel File
+                    </button>
+                </form>
+
+                <!-- Progress Indicator -->
+                <div class="progress-container" id="progress-container" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">Processing file...</div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="result-section" id="result-section" style="display: none;">
+                    <div class="result-message" id="result-message"></div>
+                    <button type="button" class="btn-enhanced btn-success-enhanced" id="download-formatted-btn" style="display: none;">
+                        <i data-lucide="download" class="icon" style="margin-right: 8px;"></i>
+                        Download Formatted Excel
+                    </button>
+                </div>
+
+                <!-- Professional Feature Highlights -->
+                <div class="feature-highlights" style="margin-top: 3rem;">
+                    <h3 class="feature-highlights-title">What This Tool Does</h3>
+                    <div class="feature-highlights-grid">
+                        <div class="feature-highlight-item">
+                            <div class="feature-highlight-icon">
+                                <i data-lucide="sparkles" class="icon"></i>
+                            </div>
+                            <span>Professional Excel formatting with fonts, borders & alignment</span>
+                        </div>
+                        <div class="feature-highlight-item">
+                            <div class="feature-highlight-icon">
+                                <i data-lucide="search" class="icon"></i>
+                            </div>
+                            <span>Intelligent header detection using fuzzy matching</span>
+                        </div>
+                        <div class="feature-highlight-item">
+                            <div class="feature-highlight-icon">
+                                <i data-lucide="layout" class="icon"></i>
+                            </div>
+                            <span>Column optimization & data consistency cleanup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Element references
+        const excelUploadArea = document.getElementById('excel-upload-area');
+        const excelFileInput = document.getElementById('excel-file-input');
+        const formatExcelBtn = document.getElementById('format-excel-btn');
+        const progressContainer = document.getElementById('progress-container');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        const resultSection = document.getElementById('result-section');
+        const resultMessage = document.getElementById('result-message');
+        const downloadFormattedBtn = document.getElementById('download-formatted-btn');
+
+        const API_BASE = 'https://alaeautomatesapi.up.railway.app';
+        let currentFileId = null;
+
+        // Drag and Drop Setup
+        function setupDragDrop(uploadArea, fileInput) {
+            uploadArea.addEventListener('click', () => fileInput.click());
+
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    updateUploadAreaState(uploadArea, files[0].name);
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    updateUploadAreaState(uploadArea, e.target.files[0].name);
+                }
+            });
+        }
+
+        function updateUploadAreaState(uploadArea, fileName) {
+            uploadArea.classList.add('file-selected');
+            const textElement = uploadArea.querySelector('.file-upload-text');
+            textElement.textContent = `Selected: ${fileName}`;
+        }
+
+        setupDragDrop(excelUploadArea, excelFileInput);
+
+        // Format Excel File
+        formatExcelBtn.addEventListener('click', async () => {
+            // Validate file upload
+            if (!excelFileInput.files[0]) {
+                if (window.ProfessionalUI) {
+                    window.ProfessionalUI.showAlert('warning', 'File Required', 'Please upload an Excel file before formatting.');
+                } else {
+                    alert('Please upload an Excel file before formatting.');
+                }
+                return;
+            }
+
+            const file = excelFileInput.files[0];
+
+            // Validate file type
+            const allowedTypes = [
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                'application/vnd.ms-excel'
+            ];
+
+            if (!allowedTypes.includes(file.type) && !file.name.match(/\.(xlsx|xls)$/i)) {
+                if (window.ProfessionalUI) {
+                    window.ProfessionalUI.showAlert('error', 'Invalid File Type', 'Please upload a valid Excel file (.xlsx or .xls).');
+                } else {
+                    alert('Please upload a valid Excel file (.xlsx or .xls).');
+                }
+                return;
+            }
+
+            // Show progress
+            progressContainer.style.display = 'block';
+            resultSection.style.display = 'none';
+            formatExcelBtn.disabled = true;
+
+            try {
+                // Create FormData
+                const formData = new FormData();
+                formData.append('excel_file', file);
+
+                // Upload and process
+                const response = await fetch(`${API_BASE}/api/excel-formatter/process`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    currentFileId = result.file_id;
+
+                    // Update progress to complete
+                    progressFill.style.width = '100%';
+                    progressText.textContent = 'Formatting complete!';
+
+                    // Show success message
+                    setTimeout(() => {
+                        progressContainer.style.display = 'none';
+                        resultSection.style.display = 'block';
+                        resultMessage.innerHTML = `
+                            <div class="success-message">
+                                <i data-lucide="check-circle" class="icon"></i>
+                                <div>
+                                    <h3>Excel File Formatted Successfully!</h3>
+                                    <p>Your Excel file has been professionally formatted with optimized styling and data organization.</p>
+                                    ${result.summary ? `<div class="summary-info">${result.summary}</div>` : ''}
+                                </div>
+                            </div>
+                        `;
+                        downloadFormattedBtn.style.display = 'inline-flex';
+                        lucide.createIcons();
+                    }, 1000);
+
+                } else {
+                    throw new Error(result.error || 'Formatting failed');
+                }
+
+            } catch (error) {
+                console.error('Error formatting Excel file:', error);
+                progressContainer.style.display = 'none';
+                resultSection.style.display = 'block';
+                resultMessage.innerHTML = `
+                    <div class="error-message">
+                        <i data-lucide="alert-circle" class="icon"></i>
+                        <div>
+                            <h3>Formatting Failed</h3>
+                            <p>${error.message || 'An error occurred while formatting the Excel file.'}</p>
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+            } finally {
+                formatExcelBtn.disabled = false;
+                progressFill.style.width = '0%';
+            }
+        });
+
+        // Download formatted file
+        downloadFormattedBtn.addEventListener('click', async () => {
+            if (!currentFileId) {
+                if (window.ProfessionalUI) {
+                    window.ProfessionalUI.showAlert('error', 'No File Available', 'Please format a file first.');
+                } else {
+                    alert('Please format a file first.');
+                }
+                return;
+            }
+
+            try {
+                downloadFormattedBtn.disabled = true;
+                downloadFormattedBtn.innerHTML = '<i data-lucide="loader-2" class="icon animate-spin" style="margin-right: 8px;"></i>Downloading...';
+                lucide.createIcons();
+
+                const response = await fetch(`${API_BASE}/api/excel-formatter/download/${currentFileId}`);
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = `formatted_excel_${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.xlsx`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Download failed');
+                }
+
+            } catch (error) {
+                console.error('Error downloading file:', error);
+                if (window.ProfessionalUI) {
+                    window.ProfessionalUI.showAlert('error', 'Download Failed', error.message || 'Failed to download the formatted file.');
+                } else {
+                    alert('Failed to download the formatted file: ' + error.message);
+                }
+            } finally {
+                downloadFormattedBtn.disabled = false;
+                downloadFormattedBtn.innerHTML = '<i data-lucide="download" class="icon" style="margin-right: 8px;"></i>Download Formatted Excel';
+                lucide.createIcons();
+            }
+        });
+
+        // Progress simulation for visual feedback
+        let progressInterval;
+        function simulateProgress() {
+            let progress = 0;
+            progressInterval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 90) {
+                    progress = 90;
+                    clearInterval(progressInterval);
+                }
+                progressFill.style.width = progress + '%';
+
+                if (progress < 30) {
+                    progressText.textContent = 'Analyzing Excel structure...';
+                } else if (progress < 60) {
+                    progressText.textContent = 'Detecting headers and data...';
+                } else {
+                    progressText.textContent = 'Applying professional formatting...';
+                }
+            }, 200);
+        }
+
+        // Start progress simulation when formatting begins
+        formatExcelBtn.addEventListener('click', () => {
+            if (excelFileInput.files[0]) {
+                setTimeout(simulateProgress, 100);
+            }
+        });
+    </script>
+</body>
+</html>

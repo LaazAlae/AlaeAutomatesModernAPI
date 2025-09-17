@@ -3963,3 +3963,380 @@ body {
     color: var(--accent-color);
     font-weight: 500;
 }
+/* ==========================================
+   PROFESSIONAL FEATURE HIGHLIGHTS
+   ========================================== */
+
+.feature-highlights {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    margin-top: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.feature-highlights-title {
+    color: var(--text-primary);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.feature-highlights-grid {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.feature-highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-medium);
+}
+
+.feature-highlight-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(243, 24, 24, 0.3);
+    transform: translateX(4px);
+}
+
+.feature-highlight-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    border-radius: 50%;
+    color: white;
+}
+
+.feature-highlight-icon .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.feature-highlight-item span {
+    color: var(--text-secondary);
+    font-size: clamp(14px, 1.2vw, 16px);
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* ==========================================
+   FILE UPLOAD GRID LAYOUT
+   ========================================== */
+
+.file-upload-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2vw, 2rem);
+    margin-bottom: 2rem;
+}
+
+.file-upload-area.compact {
+    min-height: 120px;
+    padding: 1.5rem 1rem;
+}
+
+.file-upload-area.compact .file-upload-text {
+    font-size: clamp(14px, 1.2vw, 16px);
+    font-weight: 500;
+}
+
+.file-upload-area.compact .file-upload-hint {
+    font-size: clamp(12px, 1vw, 14px);
+    margin-top: 0.5rem;
+}
+
+/* ==========================================
+   CUTOFF SECTION STYLING
+   ========================================== */
+
+.cutoff-section {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.cutoff-section .form-label-enhanced.center {
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.cutoff-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cutoff-input-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.cutoff-input-icon {
+    position: absolute;
+    left: 12px;
+    color: var(--text-muted);
+    width: 18px;
+    height: 18px;
+    z-index: 1;
+}
+
+.cutoff-input {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 16px 12px 45px;
+    color: var(--text-primary);
+    font-size: clamp(16px, 1.4vw, 18px);
+    font-weight: 500;
+    width: 200px;
+    text-align: center;
+    transition: all var(--transition-medium);
+    outline: none;
+    font-family: 'Inter', monospace;
+    letter-spacing: 0.5px;
+}
+
+.cutoff-input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.cutoff-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(243, 24, 24, 0.1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+}
+
+.cutoff-input:hover:not(:focus) {
+    border-color: var(--border-color-light);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
+}
+
+.cutoff-hint {
+    color: var(--text-muted);
+    font-size: clamp(12px, 1vw, 14px);
+    margin: 0;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* ==========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================== */
+
+@media (max-width: 768px) {
+    .file-upload-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .feature-highlight-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .cutoff-input {
+        width: 180px;
+    }
+}
+
+/* ==========================================
+   COMPACT NAVIGATION FIX
+   ========================================== */
+
+.secondary-nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 1vw, 1rem);
+    padding: 0 1rem;
+}
+
+.secondary-nav-item {
+    font-size: clamp(12px, 1.1vw, 14px) !important;
+    padding: clamp(6px, 1vw, 10px) clamp(12px, 1.5vw, 16px) !important;
+    white-space: nowrap;
+    border-radius: 6px;
+    transition: all var(--transition-fast);
+}
+
+.secondary-nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+}
+
+.secondary-nav-item.active {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    color: white !important;
+    font-weight: 500;
+}
+
+/* Make navigation wrap properly on smaller screens */
+@media (max-width: 1200px) {
+    .secondary-nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem;
+    }
+    
+    .secondary-nav-item {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .secondary-nav-container {
+        grid-template-columns: repeat(3, 1fr);
+        display: grid;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+/* ==========================================
+   HOMEPAGE TOOLS GRID 3x2 LAYOUT
+   ========================================== */
+
+.tools-grid-main {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+    gap: clamp(1rem, 2vw, 1.5rem) !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 0 1rem;
+}
+
+.tool-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: clamp(12px, 1vw, 16px) !important;
+    padding: clamp(1rem, 2vw, 1.5rem) !important;
+    text-align: center !important;
+    transition: all var(--transition-medium) !important;
+    cursor: pointer !important;
+    backdrop-filter: blur(10px) !important;
+    min-height: clamp(160px, 15vw, 200px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.tool-card:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    border-color: rgba(243, 24, 24, 0.4) !important;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
+    box-shadow: 0 8px 32px rgba(243, 24, 24, 0.15) !important;
+}
+
+.tool-icon {
+    width: clamp(50px, 4vw, 60px) !important;
+    height: clamp(50px, 4vw, 60px) !important;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light)) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: clamp(0.75rem, 1.5vw, 1rem) !important;
+    color: white !important;
+}
+
+.tool-icon .icon-large {
+    width: clamp(24px, 2vw, 28px) !important;
+    height: clamp(24px, 2vw, 28px) !important;
+}
+
+.tool-title {
+    font-size: clamp(14px, 1.3vw, 18px) !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    margin-bottom: clamp(0.5rem, 1vw, 0.75rem) !important;
+    line-height: 1.2 !important;
+}
+
+.tool-description {
+    font-size: clamp(12px, 1vw, 14px) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    opacity: 0.9 !important;
+}
+
+/* Help button positioning */
+.help-button-compact {
+    position: fixed !important;
+    bottom: 2rem !important;
+    right: 2rem !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light)) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    cursor: pointer !important;
+    transition: all var(--transition-medium) !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(243, 24, 24, 0.3) !important;
+    z-index: 100 !important;
+}
+
+.help-button-compact:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 24px rgba(243, 24, 24, 0.4) !important;
+}
+
+.help-button-compact .icon {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+/* Responsive adjustments for tool grid */
+@media (max-width: 1024px) {
+    .tools-grid-main {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-rows: repeat(3, 1fr) !important;
+        max-width: 600px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .tools-grid-main {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(6, 1fr) !important;
+        max-width: 400px !important;
+        gap: 1rem !important;
+    }
+    
+    .tool-card {
+        min-height: 140px !important;
+        padding: 1rem !important;
+    }
+    
+    .help-button-compact {
+        bottom: 1rem !important;
+        right: 1rem !important;
+        width: 45px !important;
+        height: 45px !important;
+    }
+}
